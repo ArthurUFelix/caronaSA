@@ -14,7 +14,7 @@
 
 - [x] Criar migrations
 - [x] Criar models
-- [] Criar crud básico para todas as models
-- [] Verificar e criar funções extras para as models
-- [] Configurar Multer para o armazenamento de imagens
-- [] Configurar mecanismo de envio de emails
+- [ ] Criar crud básico para todas as models
+- [ ] Verificar e criar funções extras para as models
+- [ ] Configurar Multer para o armazenamento de imagens
+- [ ] Configurar mecanismo de envio de emails
