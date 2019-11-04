@@ -10,11 +10,14 @@
 - Executar a instalação do PostGis via Query no seu banco: `create extension postgis`
 - Comando para executar as migrations: `yarn sequelize db:migrate`
 
+**Utilize o arquivo `Workspace-CaronaSA` para realizar a importação do Workspace para o [Insomnia](https://insomnia.rest/). Siga os passos abaixo para a importação**
+![](insomnia.gif)
+
 ### Tarefas
 
 - [x] Criar migrations
 - [x] Criar models
-- [ ] Criar crud básico para todas as models
+- [x] Criar crud básico para todas as models
 - [ ] Verificar e criar funções extras para as models
 - [ ] Configurar Multer para o armazenamento de imagens
 - [ ] Configurar mecanismo de envio de emails

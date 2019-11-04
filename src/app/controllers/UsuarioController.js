@@ -3,6 +3,14 @@ import * as Yup from "yup";
 import Usuario from "../models/Usuario";
 
 class UsuarioController {
+  async show(req, res) {
+    const { id } = req.params;
+
+    const usuario = await Usuario.findByPk(id);
+
+    return res.json(usuario);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       nome: Yup.string().required(),

@@ -16,6 +16,9 @@ class InstituicaoController {
       return res.status(400).json({ erro: "Validação Falhou" });
     }
 
+    /**
+     * Verifica se o usuário logado é admin
+     */
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
@@ -50,6 +53,9 @@ class InstituicaoController {
       return res.status(400).json({ erro: "Validação falhou" });
     }
 
+    /**
+     * Verifica se o usuário logado é admin
+     */
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
@@ -83,6 +89,9 @@ class InstituicaoController {
   async delete(req, res) {
     const { id } = req.params;
 
+    /**
+     * Verifica se o usuário logado é admin
+     */
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
@@ -94,6 +103,10 @@ class InstituicaoController {
     if (!instituicao) {
       return res.status(400).json({ erro: "Instituição não encontrada" });
     }
+
+    await instituicao.destroy();
+
+    return res.json({ mensagem: "Instituição excluida" });
   }
 }
 
