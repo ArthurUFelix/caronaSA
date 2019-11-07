@@ -1,8 +1,8 @@
-import { Op, Sequelize } from 'sequelize';
+import { Op, Sequelize } from "sequelize";
 
-import Usuario from '../models/Usuario';
-import Carona from '../models/Carona';
-import Instituicao from '../models/Instituicao';
+import Usuario from "../models/Usuario";
+import Carona from "../models/Carona";
+import Instituicao from "../models/Instituicao";
 
 class BuscaController {
   async index(req, res) {
@@ -10,41 +10,47 @@ class BuscaController {
 
     const usuario = await Usuario.findByPk(req.idUsuario);
 
+    // ST_Distance_Sphere(the_geom, ST_MakePoint(your_lon,your_lat)) <= radius_mi * 1609.34
+
+    const i = await Instituicao.findByPk(2);
+    return res.json(i);
+
     const caronas = await Carona.findAll({
       where: {
         id_usuario: {
           [Op.not]: 2
         },
-        id_instituicao: id_instituicao,
-        [
-          Sequelize.fn('ST_Distance_Sphere',
-            Sequelize.col('usuario')
-            Sequelize.fn('ST_MakePoint'),
-            Sequelize.col('')
-          )
-        ]
+        id_instituicao: id_instituicao
       },
       include: [
         {
           model: Instituicao,
-          as: 'instituicao',
+          as: "instituicao",
           attributes: []
         },
         {
           model: Usuario,
-          as: 'usuario',
+          as: "usuario",
           attributes: []
         }
       ],
-      attributes: ['id_usuario', 'id_instituicao', [Sequelize.col('instituicao.geoloc'), 'geoloc']]
-    })
+      attributes: [
+        "id_usuario",
+        "id_instituicao",
+        [Sequelize.col("instituicao.geoloc"), "geoloc"],
+        [
+          Sequelize.fn(
+            "ST_Distance_Sphere",
+            Sequelize.col("usuario.geoloc"),
+            Sequelize.col("instituicao.geoloc")
+          ),
+          "distancia"
+        ]
+      ]
+    });
 
     return res.json(caronas);
   }
 }
 
 export default new BuscaController();
-
-ST_Distance_Sphere(the_geom, ST_MakePoint(your_lon,your_lat)) <= radius_mi * 1609.34
-
-Distancia()
