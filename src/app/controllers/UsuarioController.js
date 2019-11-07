@@ -6,7 +6,9 @@ class UsuarioController {
   async show(req, res) {
     const { id } = req.params;
 
-    const usuario = await Usuario.findByPk(id);
+    const usuario = await Usuario.findByPk(id, { 
+      attributes: ['id', 'nome',  'email', 'telefone', 'endereco', 'geoloc']
+    });
 
     return res.json(usuario);
   }

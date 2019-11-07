@@ -4,6 +4,7 @@ import UsuarioController from "./app/controllers/UsuarioController";
 import SessaoController from "./app/controllers/SessaoController";
 import InstituicaoController from "./app/controllers/InstituicaoController";
 import CaronaController from "./app/controllers/CaronaController";
+import BuscaController from "./app/controllers/BuscaController";
 
 import authMiddleware from "./app/middlewares/auth";
 
@@ -24,6 +25,8 @@ routes.delete("/instituicoes/:id", InstituicaoController.delete);
 routes.post("/caronas", CaronaController.store);
 routes.put("/caronas/:id", CaronaController.update);
 routes.delete("/caronas/:id", CaronaController.delete);
+
+routes.get("/buscar", BuscaController.index);
 
 // routes.post("/files", upload.single("file"), FileController.store);
 
