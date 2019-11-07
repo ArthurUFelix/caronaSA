@@ -2,9 +2,9 @@
 
 ### Passos para instalação
 
-- Na pasta do projeto, executar um `yarn` pelo terminal, para baixar todas as dependencias
+- Na pasta do projeto, executar um `yarn` (ou `npm i`) pelo terminal, para baixar todas as dependencias
 - Criar um arquivo na pasta raiz chamado `.env` preenchendo-o com o conteúdo do `.env.example`
-- Executar o comando `yarn dev`, no terminal, para inicializar o servidor
+- Executar o comando `yarn dev` (ou `npm run dev`), no terminal, para inicializar o servidor
 
   #### Caso for usar outro banco de dados
 
