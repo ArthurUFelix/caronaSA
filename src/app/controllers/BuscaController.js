@@ -6,21 +6,29 @@ import Instituicao from "../models/Instituicao";
 
 class BuscaController {
   async index(req, res) {
-    const { id_instituicao, raio } = req.query;
+    const { id_instituicao, distancia } = req.query;
+
+    const distEmGraus = distancia / 1000 / 111.12;
 
     const usuario = await Usuario.findByPk(req.idUsuario);
 
-    // ST_Distance_Sphere(the_geom, ST_MakePoint(your_lon,your_lat)) <= radius_mi * 1609.34
+    const { coordinates: usuarioCord } = usuario.geoloc;
 
-    const i = await Instituicao.findByPk(2);
-    return res.json(i);
+    const usuarioLoc = Sequelize.literal(
+      `ST_GeomFromText('POINT(${usuarioCord[0]} ${usuarioCord[1]})', 4326)`
+    );
 
     const caronas = await Carona.findAll({
       where: {
         id_usuario: {
-          [Op.not]: 2
+          [Op.not]: usuario.id
         },
-        id_instituicao: id_instituicao
+        id_instituicao: id_instituicao,
+        [Op.and]: Sequelize.fn(
+          "ST_Intersects",
+          Sequelize.col("usuario.geoloc"),
+          Sequelize.fn("ST_Buffer", usuarioLoc, distEmGraus)
+        )
       },
       include: [
         {
@@ -31,22 +39,10 @@ class BuscaController {
         {
           model: Usuario,
           as: "usuario",
-          attributes: []
+          attributes: ["geoloc"]
         }
       ],
-      attributes: [
-        "id_usuario",
-        "id_instituicao",
-        [Sequelize.col("instituicao.geoloc"), "geoloc"],
-        [
-          Sequelize.fn(
-            "ST_Distance_Sphere",
-            Sequelize.col("usuario.geoloc"),
-            Sequelize.col("instituicao.geoloc")
-          ),
-          "distancia"
-        ]
-      ]
+      attributes: ["id_usuario", "id_instituicao"]
     });
 
     return res.json(caronas);

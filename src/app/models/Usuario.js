@@ -12,7 +12,7 @@ class Usuario extends Model {
         telefone: Sequelize.STRING,
         endereco: Sequelize.STRING,
         admin: Sequelize.BOOLEAN,
-        geoloc: Sequelize.GEOMETRY("POINT"),
+        geoloc: Sequelize.GEOMETRY("POINT", 4326),
         lat: Sequelize.VIRTUAL,
         lon: Sequelize.VIRTUAL
       },
