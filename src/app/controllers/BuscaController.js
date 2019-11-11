@@ -42,7 +42,7 @@ class BuscaController {
           attributes: ["geoloc"]
         }
       ],
-      attributes: ["id_usuario", "id_instituicao"]
+      attributes: ["id", "id_usuario", "id_instituicao"]
     });
 
     return res.json(caronas);
