@@ -22,6 +22,7 @@ routes.post("/instituicoes", InstituicaoController.store);
 routes.put("/instituicoes/:id", InstituicaoController.update);
 routes.delete("/instituicoes/:id", InstituicaoController.delete);
 
+routes.get("/caronas/:id", CaronaController.show);
 routes.post("/caronas", CaronaController.store);
 routes.put("/caronas/:id", CaronaController.update);
 routes.delete("/caronas/:id", CaronaController.delete);

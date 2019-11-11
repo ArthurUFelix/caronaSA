@@ -2,8 +2,26 @@ import * as Yup from "yup";
 
 import Carona from "../models/Carona";
 import Instituicao from "../models/Instituicao";
+import Usuario from "../models/Usuario";
 
 class CaronaController {
+  async show(req, res) {
+    const { id } = req.params;
+
+    const carona = await Carona.findByPk(id, {
+      include: [
+        {
+          model: Usuario,
+          as: "usuario",
+          attributes: ["nome", "telefone"]
+        }
+      ],
+      attributes: ["id", "desc_carro", "hora", "dias"]
+    });
+
+    return res.json(carona);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       id_instituicao: Yup.number().required(),
