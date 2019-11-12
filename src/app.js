@@ -2,6 +2,7 @@ import "dotenv/config";
 
 import express from "express";
 import routes from "./routes";
+import path from "path";
 
 import "./database";
 
@@ -16,6 +17,10 @@ class App {
   }
 
   middlewares() {
+    this.server.use(
+      "/pages",
+      express.static(path.resolve(__dirname, 'public', 'pages'))
+    );
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
   }
