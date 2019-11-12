@@ -49,14 +49,8 @@ body {
   --mdc-theme-secondary: #394a6e;
 }
 
-.mdc-drawer .mdc-list-item--activated {
-  color: #394a6e;
-}
-
-.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic {
-  color: #394a6e;
-}
-
+.mdc-drawer .mdc-list-item--activated,
+.mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic,
 .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
   color: #394a6e;
 }
@@ -64,6 +58,7 @@ body {
 #loginLogo {
   max-width: 80px;
 }
+
 #login-div-esq,
 #login-div-dir {
   height: 100%;
