@@ -28,6 +28,10 @@ body {
   height: 100%;
 }
 
+a {
+  color: #394a6e;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -58,7 +62,7 @@ body {
 }
 
 #loginLogo {
-  max-width: 100px;
+  max-width: 80px;
 }
 #login-div-esq,
 #login-div-dir {
@@ -101,7 +105,7 @@ body {
 }
 
 #login-header {
-  margin-top: 15%;
+  margin-top: 10%;
 }
 
 #divNome,
