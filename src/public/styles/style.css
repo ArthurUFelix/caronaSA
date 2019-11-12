@@ -108,42 +108,18 @@ body {
   margin-top: 10%;
 }
 
-#divNome,
-#divEmail,
-#divSenha,
-#divConfirmarSenha,
-#divEntrar,
-#divTelefone,
-#divEndereco,
-#divCEP,
-#divNumero {
+.divForm {
   margin-top: 25px;
 }
 
-#loginEmail,
-#loginSenha,
-#registroEmail,
-#registroSenha,
-#registroNome,
-#registroConfirmarSenha,
-#registroTelefone,
-#registroCEP,
-#registroEndereco,
-#registroNumero {
+.inputForm {
   width: 300px;
   padding-top: 10px;
 }
 
-#loginEntrar,
-#registroContinuar,
-#registroRegistrar,
-#registroVoltar {
+.buttonForm {
   height: 54px;
   width: 300px;
-}
-
- {
-  width: 250px;
 }
 
 .invisible {
@@ -157,8 +133,8 @@ body {
   #login-div-dir {
     width: 100%;
   }
-  #loginEmail,
-  #loginSenha {
+  .inputForm,
+  .buttonForm {
     width: 400px;
   }
 }
