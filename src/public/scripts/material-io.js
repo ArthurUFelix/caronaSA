@@ -9,5 +9,3 @@ const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(
 topAppBar.listen("MDCTopAppBar:nav", () => {
   drawer.open = !drawer.open;
 });
-
-const textField = new MDCTextField(document.querySelector(".mdc-text-field"));
