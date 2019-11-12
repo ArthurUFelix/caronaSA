@@ -1,13 +1,14 @@
 /* fallback */
 @font-face {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialicons/v48/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2)
+    format("woff2");
 }
 
 .material-icons {
-  font-family: 'Material Icons';
+  font-family: "Material Icons";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -18,18 +19,9 @@
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
-
-/* 
-ABAIXO
-ABAIXO
-ABAIXO
-ABAIXO
-ABAIXO
-ABAIXO
-*/
 
 html,
 body {
@@ -47,7 +39,7 @@ body {
   padding-right: 8px;
   color: white;
 }
-@import "@material/textfield/mdc-text-field";
+
 :root {
   --mdc-theme-primary: #394a6e;
   --mdc-theme-secondary: #394a6e;
@@ -110,29 +102,48 @@ body {
 
 #login-header {
   margin-top: 15%;
-  /* background-color: red; */
 }
 
-#login-form {
-  /* 
-  background-color: orange; */
-}
-
+#divNome,
 #divEmail,
 #divSenha,
-#divEntrar {
+#divConfirmarSenha,
+#divEntrar,
+#divTelefone,
+#divEndereco,
+#divCEP,
+#divNumero {
   margin-top: 25px;
 }
 
 #loginEmail,
-#loginSenha {
+#loginSenha,
+#registroEmail,
+#registroSenha,
+#registroNome,
+#registroConfirmarSenha,
+#registroTelefone,
+#registroCEP,
+#registroEndereco,
+#registroNumero {
   width: 300px;
   padding-top: 10px;
 }
 
-#loginEntrar {
+#loginEntrar,
+#registroContinuar,
+#registroRegistrar,
+#registroVoltar {
   height: 54px;
   width: 300px;
+}
+
+ {
+  width: 250px;
+}
+
+.invisible {
+  display: none;
 }
 
 @media (max-width: 1000px) {
