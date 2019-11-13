@@ -18,25 +18,34 @@
   </head>
 
   <body>
+    <!-- MENU LATERAL -->
     <aside class="mdc-drawer mdc-drawer--modal">
+      <!-- HEADER -->
       <div class="mdc-drawer__header">
         <h3 class="mdc-drawer__title">User</h3>
         <h6 class="mdc-drawer__subtitle">user@carona.com</h6>
       </div>
+      <!-- LISTA -->
       <div class="mdc-drawer__content">
         <nav class="mdc-list">
-          <a class="mdc-list-item mdc-list-item--activated" href="./suas-caronas.html">
+          <!-- SUAS CARONAS -->
+          <a
+            class="mdc-list-item mdc-list-item--activated"
+            href="./suas-caronas.html"
+          >
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >swap_horiz</i
             >
             <span class="mdc-list-item__text">Suas Caronas</span>
           </a>
+          <!-- SUA CONTA -->
           <a class="mdc-list-item" href="./sua-conta.html">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >account_circle</i
             >
             <span class="mdc-list-item__text">Sua Conta</span>
           </a>
+          <!-- LOGOUT -->
           <a class="mdc-list-item" href="#">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >power_settings_new</i
@@ -49,7 +58,9 @@
 
     <div class="mdc-drawer-scrim"></div>
 
+    <!-- RESTO DA PAGINA -->
     <div class="mdc-drawer-app-content">
+      <!-- TOP BAR -->
       <header class="mdc-top-app-bar app-bar" id="app-bar">
         <div class="mdc-top-app-bar__row">
           <section
@@ -65,9 +76,48 @@
         </div>
       </header>
 
+      <!-- CONTENT -->
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
-          App Content
+          <div class="containerWrapper">
+            <form class="containerForm">
+              <h6 class="mdc-dialog__title">Dados da Carona</h6>
+              <!-- INSTITUIÇÃO -->
+              <p class="mdc-typography--overline">INSTITUIÇÃO (DESTINO)</p>
+              <div class="mdc-select mdc-select--outlined">
+                <input type="hidden" name="enhanced-select" />
+                <i class="mdc-select__dropdown-icon"></i>
+                <div class="mdc-select__selected-text"></div>
+                <div
+                  class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class"
+                >
+                  <ul class="mdc-list">
+                    <li
+                      class="mdc-list-item mdc-list-item--selected"
+                      data-value=""
+                      aria-selected="true"
+                    ></li>
+                    <li class="mdc-list-item" data-value="grains">
+                      Bread, Cereal, Rice, and Pasta
+                    </li>
+                    <li class="mdc-list-item" data-value="vegetables">
+                      Vegetables
+                    </li>
+                    <li class="mdc-list-item" data-value="fruit">
+                      Fruit
+                    </li>
+                  </ul>
+                </div>
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label class="mdc-floating-label">Pick a Food Group</label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+            </form>
+          </div>
         </div>
       </main>
     </div>

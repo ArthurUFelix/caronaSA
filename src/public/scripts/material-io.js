@@ -9,3 +9,7 @@ const topAppBar = mdc.topAppBar.MDCTopAppBar.attachTo(
 topAppBar.listen("MDCTopAppBar:nav", () => {
   drawer.open = !drawer.open;
 });
+
+const select = mdc.select.MDCSelect.attachTo(
+  document.querySelector(".mdc-select")
+);
