@@ -2,3 +2,5 @@ node_modules/
 yarn.lock
 .env
 src/.DS_Store
+
+src/public/.DS_Store
