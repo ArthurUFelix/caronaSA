@@ -18,8 +18,8 @@ class App {
 
   middlewares() {
     this.server.use(
-      "/pages",
-      express.static(path.resolve(__dirname, 'public', 'pages'))
+      "/public",
+      express.static(path.resolve(__dirname, 'public'))
     );
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
