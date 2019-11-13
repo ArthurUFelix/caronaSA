@@ -4,3 +4,5 @@ yarn.lock
 src/.DS_Store
 
 src/public/.DS_Store
+
+src/public/scripts/
