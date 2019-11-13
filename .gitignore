@@ -6,3 +6,5 @@ src/.DS_Store
 src/public/.DS_Store
 
 src/public/scripts/
+
+.vscode/
