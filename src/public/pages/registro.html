@@ -26,7 +26,7 @@
           </div>
           <form id="registro-form">
             <!-- REGISTRO PARTE 1 -->
-            <div class="invisible" id="resgitroParte1">
+            <div class="" id="resgitroParte1">
               <!-- NOME -->
               <div
                 class="mdc-text-field mdc-text-field--outlined divForm"
@@ -124,18 +124,17 @@
                   <div class="mdc-notched-outline__trailing"></div>
                 </div>
               </div>
+              <br />
               <!-- BOTÃO: CONTINUAR -->
-              <div class="divForm">
-                <button
-                  class="mdc-button mdc-button--unelevated buttonForm"
-                  id="registroContinuar"
-                >
-                  <span class="mdc-button__ripple"></span>Continuar
-                </button>
-              </div>
+              <button
+                class="mdc-button mdc-button--unelevated buttonForm"
+                id="registroContinuar"
+              >
+                <span class="mdc-button__ripple"></span>Continuar
+              </button>
             </div>
             <!-- REGISTRO PARTE 2 -->
-            <div class="" id="registroParte2">
+            <div class="invisible" id="registroParte2">
               <!-- TELEFONE -->
               <div
                 class="mdc-text-field mdc-text-field--outlined divForm"
@@ -188,10 +187,14 @@
                   id="registroEndereco"
                   class="mdc-text-field__input inputForm"
                 />
-                <div class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched">
+                <div
+                  class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched"
+                >
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroEndereco" class="mdc-floating-label mdc-floating-label--float-above"
+                    <label
+                      for="registroEndereco"
+                      class="mdc-floating-label mdc-floating-label--float-above"
                       >Endereço</label
                     >
                   </div>
@@ -220,27 +223,30 @@
                   <div class="mdc-notched-outline__trailing"></div>
                 </div>
               </div>
+              <br />
               <!-- BOTÕES: REGISTRAR E VOLTAR -->
-              <div class="divForm">
-                <button
-                  class="mdc-button mdc-button--unelevated buttonForm"
-                  id="registroRegistrar"
-                >
-                  <span class="mdc-button__ripple"></span>Registrar
-                </button>
-                <div class="divForm">
-                    <button
-                      class="mdc-button mdc-button--outlined"
-                      id="registroRegistrar"
-                    >
-                      <span class="mdc-button__ripple"></span>Voltar
-                    </button>
-              </div>
+              <button
+                class="mdc-button mdc-button--unelevated buttonForm"
+                id="registroRegistrar"
+              >
+                <span class="mdc-button__ripple"></span>Registrar
+              </button>
+              <br />
+              <button
+                class="mdc-button mdc-button--outlined"
+                id="registroVoltar"
+              >
+                <span class="mdc-button__ripple"></span>Voltar
+              </button>
+              <br />
             </div>
           </form>
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="/public/scripts/material-io.js"></script>
+    <script
+      type="text/javascript"
+      src="/public/scripts/material-io.js"
+    ></script>
   </body>
 </html>

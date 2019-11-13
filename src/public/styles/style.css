@@ -50,9 +50,14 @@ body {
   --mdc-theme-secondary: #394a6e;
 }
 
+.mdc-text-field--focused
+  .mdc-text-field__input:required
+  ~ .mdc-notched-outline
+  .mdc-floating-label::after,
 .mdc-drawer .mdc-list-item--activated,
 .mdc-drawer .mdc-list-item--activated .mdc-list-item__graphic,
-.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+.mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label,
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
   color: #394a6e;
 }
 
@@ -94,7 +99,8 @@ body {
 }
 
 #login-header,
-#login-form {
+#login-form,
+#registro-form {
   width: 80%;
   display: inline-block;
   vertical-align: top;
@@ -116,6 +122,10 @@ body {
 .buttonForm {
   height: 54px;
   width: 300px;
+  margin-top: 18px;
+}
+
+#registroVoltar {
   margin-top: 18px;
 }
 
@@ -155,7 +165,8 @@ body {
 }
 
 .containerForm div.mdc-select,
-.containerForm div.mdc-text-field {
+.containerForm div.mdc-text-field,
+.containerForm div.mdc-text-field input {
   width: 100%;
 }
 
@@ -172,7 +183,7 @@ body {
   }
   .containerWrapper {
     width: 96%;
-    margin: 10% 2% 10% 2%;
+    margin: 2%;
   }
   .divForm,
   .buttonForm {
