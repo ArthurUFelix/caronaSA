@@ -8,11 +8,13 @@ async function verificarLogado() {
   // ["", "public", "pages", "login.html"]
   path = location.pathname.split("/");
 
-  if (path[3] !== "login.html" && requisicao.status !== 200) {
-    return (location = "/public/pages/login.html");
+  if (path[3] === "login.html" || path[3] === "registro.html") {
+    if (requisicao.status === 200)
+      return (location = "/public/pages/criar-carona.html");
+    return;
   }
 
-  if (path[3] === "login.html" && requisicao.status === 200) {
-    return (location = "/public/pages/criar-carona.html");
+  if (requisicao.status !== 200) {
+    return (location = "/public/pages/login.html");
   }
 }
