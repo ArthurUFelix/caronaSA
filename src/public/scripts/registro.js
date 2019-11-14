@@ -40,3 +40,33 @@ $("#registroVoltar").click(function(e) {
 });
 
 // Registra
+$("#registro-form").submit(async function(e) {
+  e.preventDefault();
+
+  const dados = {
+    nome: $("#campoNome").val(),
+    email: $("#campoEmail").val(),
+    senha: $("#campoSenha").val(),
+    telefone: $("#campoEmail").val(),
+    endereco: "Endereço ficticio, de teste, 32", //$("#campoEndereco").val(),
+    lat: "-27.600407", //$("#campoLatitude").val(),
+    lon: "-48.525815" //$("#campoLongitude").val()
+    // campoCEP
+    // campoEndereco
+    // campoNumero
+    //Rio Tavares, Servidão Quadros, 519
+  };
+
+  let requisicao = await fetch("/usuarios", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+
+  let resposta = await requisicao.json();
+
+  console.log(resposta);
+});

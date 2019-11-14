@@ -125,6 +125,19 @@ body {
   margin-top: 18px;
 }
 
+.buttonFormRegistar {
+  width: calc(300px - 68px);
+}
+
+.buttonFormVoltar {
+  width: 64px;
+}
+
+.buttonFormVoltar i {
+  color: #394a6e;
+  padding: 0;
+}
+
 #registroVoltar {
   margin-top: 18px;
 }
@@ -190,11 +203,27 @@ body {
     text-align: center;
     width: 70%;
   }
+
+  .buttonFormRegistar {
+    width: calc(70% - 68px);
+  }
+
+  .buttonFormVoltar {
+    width: 64px;
+  }
 }
 
 @media (max-width: 800px) {
   .divForm,
   .buttonForm {
     width: 100%;
+  }
+
+  .buttonFormRegistar {
+    width: calc(100% - 68px);
+  }
+
+  .buttonFormVoltar {
+    width: 64px;
   }
 }
