@@ -1,10 +1,7 @@
 node_modules/
 yarn.lock
+package-lock.json
 .env
 src/.DS_Store
-
 src/public/.DS_Store
-
-src/public/scripts/
-
 .vscode/
