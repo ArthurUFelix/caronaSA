@@ -23,7 +23,7 @@ $("#btnMostrarSenha2").click(function() {
 });
 
 // Troca passos
-$("#btnContinuar").click(function(e) {
+$("#registroContinuar").click(function(e) {
   e.preventDefault();
 
   $.when($("#registroParte1").fadeOut(200)).then(() => {

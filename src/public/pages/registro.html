@@ -26,7 +26,7 @@
           </div>
           <form id="registro-form">
             <!-- REGISTRO PARTE 1 -->
-            <div class="" id="resgitroParte1">
+            <div class="" id="registroParte1">
               <!-- NOME -->
               <div
                 class="mdc-text-field mdc-text-field--outlined divForm"
@@ -34,13 +34,13 @@
               >
                 <input
                   type="text"
-                  id="registroNome"
+                  id="campoNome"
                   class="mdc-text-field__input inputForm"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="my-input" class="mdc-floating-label"
+                    <label for="campoNome" class="mdc-floating-label"
                       >Nome</label
                     >
                   </div>
@@ -55,13 +55,13 @@
               >
                 <input
                   type="text"
-                  id="registroEmail"
+                  id="campoEmail"
                   class="mdc-text-field__input inputForm"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroEmail" class="mdc-floating-label"
+                    <label for="campoEmail" class="mdc-floating-label"
                       >Email</label
                     >
                   </div>
@@ -76,19 +76,20 @@
               >
                 <input
                   type="password"
-                  id="registroSenha"
+                  id="campoSenha"
                   class="mdc-text-field__input inputForm"
                 />
                 <i
                   class="material-icons mdc-text-field__icon"
                   tabindex="0"
                   role="button"
+                  id="btnMostrarSenha"
                   >visibility</i
                 >
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroSenha" class="mdc-floating-label"
+                    <label for="campoSenha" class="mdc-floating-label"
                       >Senha</label
                     >
                   </div>
@@ -103,21 +104,20 @@
               >
                 <input
                   type="password"
-                  id="registroConfirmarSenha"
+                  id="campoConfirmarSenha"
                   class="mdc-text-field__input inputForm"
                 />
                 <i
                   class="material-icons mdc-text-field__icon"
                   tabindex="0"
                   role="button"
+                  id="btnMostrarSenha2"
                   >visibility</i
                 >
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label
-                      for="registroConfirmarSenha"
-                      class="mdc-floating-label"
+                    <label for="campoConfirmarSenha" class="mdc-floating-label"
                       >Confirmar Senha</label
                     >
                   </div>
@@ -142,13 +142,13 @@
               >
                 <input
                   type="text"
-                  id="registroTelefone"
+                  id="campoTelefone"
                   class="mdc-text-field__input inputForm"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroTelefone" class="mdc-floating-label"
+                    <label for="campoTelefone" class="mdc-floating-label"
                       >Telefone</label
                     >
                   </div>
@@ -163,15 +163,13 @@
               >
                 <input
                   type="text"
-                  id="registroCEP"
+                  id="campoCEP"
                   class="mdc-text-field__input inputForm"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroCEP" class="mdc-floating-label"
-                      >CEP</label
-                    >
+                    <label for="campoCEP" class="mdc-floating-label">CEP</label>
                   </div>
 
                   <div class="mdc-notched-outline__trailing"></div>
@@ -184,7 +182,7 @@
               >
                 <input
                   type="text"
-                  id="registroEndereco"
+                  id="campoEndereco"
                   class="mdc-text-field__input inputForm"
                 />
                 <div
@@ -193,7 +191,7 @@
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
                     <label
-                      for="registroEndereco"
+                      for="campoEndereco"
                       class="mdc-floating-label mdc-floating-label--float-above"
                       >Endereço</label
                     >
@@ -210,13 +208,13 @@
               >
                 <input
                   type="text"
-                  id="registroNumero"
+                  id="campoNumero"
                   class="mdc-text-field__input inputForm"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="registroNumero" class="mdc-floating-label"
+                    <label for="campoNumero" class="mdc-floating-label"
                       >Número</label
                     >
                   </div>
@@ -244,9 +242,12 @@
         </div>
       </div>
     </div>
+    <script src="/public/scripts/jquery.min.js"></script>
     <script
       type="text/javascript"
       src="/public/scripts/material-io.js"
     ></script>
+    <script type="text/javascript" src="/public/scripts/index.js"></script>
+    <script type="text/javascript" src="/public/scripts/registro.js"></script>
   </body>
 </html>
