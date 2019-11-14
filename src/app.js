@@ -17,9 +17,10 @@ class App {
   }
 
   middlewares() {
+    this.server.set("PORT", process.env.PORT);
     this.server.use(
       "/public",
-      express.static(path.resolve(__dirname, 'public'))
+      express.static(path.resolve(__dirname, "public"))
     );
     this.server.use(express.json());
     this.server.use(express.urlencoded({ extended: true }));
