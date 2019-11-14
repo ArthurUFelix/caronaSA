@@ -5,3 +5,9 @@ package-lock.json
 src/.DS_Store
 src/public/.DS_Store
 .vscode/
+
+src/public/scripts/caronaSA.code-workspace
+
+src/app/.DS_Store
+
+.DS_Store

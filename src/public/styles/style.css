@@ -163,6 +163,10 @@ body {
   margin: 0;
 }
 
+.formSpace {
+  margin: 1%;
+}
+
 .containerForm div.linebreak {
   margin: 15px 0px 0px 0px;
   width: 100%;
