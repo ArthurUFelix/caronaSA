@@ -69,11 +69,193 @@
         </div>
       </header>
 
+      <!-- CONTENT -->
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
-          App Content
+          <div class="containerWrapper">
+            <form class="containerForm">
+              <h6 class="mdc-dialog__title">Perfil</h6>
+              <!-- NOME -->
+              <p class="mdc-typography--overline">
+                ALTERAR NOME
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoNome"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoNome" class="mdc-floating-label"
+                      >Nome e Último Sobrenome</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- EMAIL -->
+              <p class="mdc-typography--overline">
+                ALTERAR EMAIL
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="email"
+                  id="campoEmail"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoEmail" class="mdc-floating-label"
+                      >Seu Email</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- TELEFONE -->
+              <p class="mdc-typography--overline">
+                ALTERAR TELEFONE
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoTelefone"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoTelefone" class="mdc-floating-label"
+                      >Seu Telefone</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- ENDEREÇO -->
+              <p class="mdc-typography--overline">
+                ALTERAR ENDEREÇO
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoEndereco"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoEndereco" class="mdc-floating-label"
+                      >Seu Endereço</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- ALTERAR SENHA -->
+              <p class="mdc-typography--overline">
+                ALTERAR SENHA
+              </p>
+              <divt
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoSenha"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoSenha" class="mdc-floating-label"
+                      >Nova Senha</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- CONFIRMAR SENHA -->
+              <p class="mdc-typography--overline">
+                CONFIRMAR SENHA
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoConfirmarSenha"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoConfirmarSenha" class="mdc-floating-label"
+                      >Confirme a Nova Senha</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- LINE BREAK -->
+              <div class="linebreak"></div>
+              <!-- SENHA ANTIGA -->
+              <p class="mdc-typography--overline">
+                CONFIRME A SENHA ANTIGA PARA SALVAR OS DADOS
+              </p>
+              <div
+                class="mdc-text-field mdc-text-field--outlined"
+                data-mdc-auto-init="MDCTextField"
+              >
+                <input
+                  type="text"
+                  id="campoSenha"
+                  class="mdc-text-field__input inputForm"
+                  required
+                />
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="campoSenhaAntiga" class="mdc-floating-label"
+                      >Confirme a Senha Antiga</label
+                    >
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+              <!-- LINE BREAK -->
+              <div class="linebreak"></div>
+              <!-- FOOTER -->
+              <footer class="formFooter">
+                <button class="mdc-button mdc-button--unelevated buttonForm">
+                  <span class="mdc-button__ripple">SALVAR</span>
+                </button>
+              </footer>
+            </form>
+          </div>
         </div>
-      </main>
     </div>
     <script type="text/javascript" src="/public/scripts/material-io.js"></script>
   </body>

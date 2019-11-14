@@ -132,7 +132,7 @@ body {
 .containerWrapper {
   border-radius: 8px;
   border: 1px solid #dadce0;
-  margin: 8% 25%;
+  margin: 5% 25% 3% 25%;
   text-align: center;
   vertical-align: center;
 }
