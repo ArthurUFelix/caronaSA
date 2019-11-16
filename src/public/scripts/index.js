@@ -18,3 +18,21 @@ async function verificarLogado() {
     return (location = "/public/pages/login.html");
   }
 }
+
+async function realizarLogin(email, senha) {
+  const dados = {
+    email: email,
+    senha: senha
+  };
+
+  const requisicao = await fetch("/sessoes", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+
+  return requisicao.json();
+}

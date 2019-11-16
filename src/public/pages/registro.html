@@ -36,6 +36,7 @@
                   type="text"
                   id="campoNome"
                   class="mdc-text-field__input inputForm"
+                  required
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -57,6 +58,7 @@
                   type="text"
                   id="campoEmail"
                   class="mdc-text-field__input inputForm"
+                  required
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -78,6 +80,8 @@
                   type="password"
                   id="campoSenha"
                   class="mdc-text-field__input inputForm"
+                  minlength="6"
+                  required
                 />
                 <i
                   class="material-icons mdc-text-field__icon"
@@ -106,6 +110,8 @@
                   type="password"
                   id="campoConfirmarSenha"
                   class="mdc-text-field__input inputForm"
+                  minlength="6"
+                  required
                 />
                 <i
                   class="material-icons mdc-text-field__icon"
@@ -144,6 +150,7 @@
                   type="text"
                   id="campoTelefone"
                   class="mdc-text-field__input inputForm"
+                  required
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -165,6 +172,7 @@
                   type="text"
                   id="campoCEP"
                   class="mdc-text-field__input inputForm"
+                  required
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -184,6 +192,8 @@
                   type="text"
                   id="campoEndereco"
                   class="mdc-text-field__input inputForm"
+                  disabled
+                  required
                 />
                 <div
                   class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched"
@@ -210,6 +220,7 @@
                   type="text"
                   id="campoNumero"
                   class="mdc-text-field__input inputForm"
+                  required
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
@@ -223,7 +234,7 @@
               </div>
               <br />
               <!-- BOTÕES: REGISTRAR E VOLTAR -->
-              <div class="">
+              <div id="divButtonsRegistro">
                 <button
                   class="mdc-button mdc-button--outlined buttonForm buttonFormVoltar"
                   id="registroVoltar"

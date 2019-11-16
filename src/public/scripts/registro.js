@@ -47,7 +47,7 @@ $("#registro-form").submit(async function(e) {
     nome: $("#campoNome").val(),
     email: $("#campoEmail").val(),
     senha: $("#campoSenha").val(),
-    telefone: $("#campoEmail").val(),
+    telefone: $("#campoTelefone").val(),
     endereco: "Endereço ficticio, de teste, 32", //$("#campoEndereco").val(),
     lat: "-27.600407", //$("#campoLatitude").val(),
     lon: "-48.525815" //$("#campoLongitude").val()
@@ -57,7 +57,7 @@ $("#registro-form").submit(async function(e) {
     //Rio Tavares, Servidão Quadros, 519
   };
 
-  let requisicao = await fetch("/usuarios", {
+  let requisicaoRegistro = await fetch("/usuarios", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -66,7 +66,16 @@ $("#registro-form").submit(async function(e) {
     body: JSON.stringify(dados)
   });
 
-  let resposta = await requisicao.json();
+  let respostaRegistro = await requisicaoRegistro.json();
 
-  console.log(resposta);
+  if (!respostaRegistro.id) {
+    return alert("Prenche os negocio direito ai po, ou o email ta em uso");
+  }
+
+  let respostaLogin = await realizarLogin(dados.email, dados.senha);
+
+  localStorage.setItem("token", respostaLogin.token);
+  localStorage.setItem("dadosUsuario", JSON.stringify(respostaLogin.usuario));
+
+  location = "/public/pages/criar-carona.html";
 });
