@@ -18,3 +18,38 @@ async function verificarLogado() {
     return (location = "/public/pages/login.html");
   }
 }
+
+async function realizarLogin(email, senha) {
+  const dados = {
+    email: email,
+    senha: senha
+  };
+
+  const requisicao = await fetch("/sessoes", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(dados)
+  });
+
+  return requisicao.json();
+}
+
+$(document).ready(() => {
+  // Preenche os dados do menu lateral
+  const dados = JSON.parse(localStorage.dadosUsuario);
+
+  $("#nomeUsuario").text(dados.nome);
+  $("#emailUsuario").text(dados.email);
+});
+
+// Seleciona o botão de login
+$("span:contains('Logout')")
+  .parent()
+  .click(() => {
+    localStorage.clear();
+
+    location = "/public/pages/login.html";
+  });

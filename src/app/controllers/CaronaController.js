@@ -16,7 +16,7 @@ class CaronaController {
           attributes: ["nome", "telefone"]
         }
       ],
-      attributes: ["id", "desc_carro", "hora", "dias"]
+      attributes: ["id", "desc_carro", "periodo", "dias"]
     });
 
     return res.json(carona);
@@ -26,12 +26,18 @@ class CaronaController {
     const schema = Yup.object().shape({
       id_instituicao: Yup.number().required(),
       desc_carro: Yup.string().required(),
-      hora: Yup.string().required(),
-      dias: Yup.string().required()
+      periodo: Yup.string().required(),
+      dias: Yup.array().required()
     });
 
     if (!(await schema.isValid(req.body))) {
       return res.status(400).json({ erro: "Validação falhou" });
+    }
+
+    const instituicao = await Instituicao.findByPk(req.body.id_instituicao);
+
+    if (!instituicao) {
+      return res.status(400).json({ erro: "Instituição não encontrada" });
     }
 
     const carona = await Carona.create({
@@ -46,8 +52,8 @@ class CaronaController {
     const schema = Yup.object().shape({
       id_instituicao: Yup.number().required(),
       desc_carro: Yup.string().required(),
-      hora: Yup.string().required(),
-      dias: Yup.string().required(),
+      periodo: Yup.string().required(),
+      dias: Yup.mixed().required(),
       disponivel: Yup.boolean().required()
     });
 

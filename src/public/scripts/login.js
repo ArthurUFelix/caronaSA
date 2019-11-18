@@ -21,23 +21,19 @@ $("#login-form").submit(async function(e) {
       senha: $("#campoSenha").val()
     };
 
-    let requisicao = await fetch("/sessoes", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(dados)
-    });
+    let respostaLogin = await realizarLogin(dados.email, dados.senha);
+    console.log(respostaLogin);
 
-    let resposta = await requisicao.json();
-
-    if (!resposta.token) {
-      return alert("credenciais erradas pô");
+    if (!respostaLogin.token) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Credênciais inválidas"
+      });
     }
 
-    localStorage.setItem("token", resposta.token);
-    localStorage.setItem("dadosUsuario", JSON.stringify(resposta.usuario));
+    localStorage.setItem("token", respostaLogin.token);
+    localStorage.setItem("dadosUsuario", JSON.stringify(respostaLogin.usuario));
 
     location = "/public/pages/criar-carona.html";
   }

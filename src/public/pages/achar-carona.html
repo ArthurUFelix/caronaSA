@@ -4,28 +4,48 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Achar Carona - CaronaPraAula</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-    />
     <link href="/public/styles/material-web.min.css" rel="stylesheet" />
-    <script src="/public/scripts/material-web.min.js"></script>
+    <script src="/public/scripts/libs/material-web.min.js"></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+    />
     <link rel="stylesheet" href="/public/styles/style.css" />
   </head>
 
   <body>
     <aside class="mdc-drawer mdc-drawer--modal">
       <div class="mdc-drawer__header">
-        <h3 class="mdc-drawer__title">User</h3>
-        <h6 class="mdc-drawer__subtitle">user@carona.com</h6>
+        <h3 id="nomeUsuario" class="mdc-drawer__title">User</h3>
+        <h6 id="emailUsuario" class="mdc-drawer__subtitle">user@carona.com</h6>
       </div>
       <div class="mdc-drawer__content">
         <nav class="mdc-list">
-          <a class="mdc-list-item mdc-list-item--activated" href="/public/pages/suas-caronas.html">
+          <a
+            class="mdc-list-item mdc-list-item--activated"
+            href="/public/pages/suas-caronas.html"
+          >
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >swap_horiz</i
             >
@@ -67,10 +87,17 @@
 
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
-          App Content
+          <div style="width: 100%; height: 580px;" id="map"></div>
         </div>
       </main>
     </div>
-    <script type="text/javascript" src="/public/scripts/material-io.js"></script>
+    <script
+      type="text/javascript"
+      src="/public/scripts/libs/material-io.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="/public/scripts/map.js"
+    ></script>
   </body>
 </html>

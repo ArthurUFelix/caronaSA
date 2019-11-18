@@ -4,16 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Criar Carona - CaronaPraAula</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"
-    />
     <link href="/public/styles/material-web.min.css" rel="stylesheet" />
-    <script src="/public/scripts/material-web.min.js"></script>
+    <script src="/public/scripts/libs/material-web.min.js"></script>
     <link rel="stylesheet" href="/public/styles/style.css" />
   </head>
 
@@ -22,8 +14,8 @@
     <aside class="mdc-drawer mdc-drawer--modal">
       <!-- HEADER -->
       <div class="mdc-drawer__header">
-        <h3 class="mdc-drawer__title">User</h3>
-        <h6 class="mdc-drawer__subtitle">user@carona.com</h6>
+        <h3 id="nomeUsuario" class="mdc-drawer__title">User</h3>
+        <h6 id="emailUsuario" class="mdc-drawer__subtitle">user@carona.com</h6>
       </div>
       <!-- LISTA -->
       <div class="mdc-drawer__content">
@@ -80,12 +72,16 @@
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
           <div class="containerWrapper">
-            <form class="containerForm">
+            <form id="carona-form" class="containerForm">
               <h6 class="mdc-dialog__title">Dados da Carona</h6>
               <!-- INSTITUIÇÃO -->
               <p class="mdc-typography--overline">DESTINO</p>
               <div class="mdc-select mdc-select--outlined mdc-select--required">
-                <input type="hidden" name="enhanced-select" />
+                <input
+                  id="campoInstituicao"
+                  type="hidden"
+                  name="enhanced-select"
+                />
                 <i class="mdc-select__dropdown-icon"></i>
                 <div
                   class="mdc-select__selected-text"
@@ -94,21 +90,12 @@
                 <div
                   class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class"
                 >
-                  <ul class="mdc-list">
+                  <ul class="mdc-list" id="listaInstituicoes">
                     <li
                       class="mdc-list-item mdc-list-item--selected"
                       data-value=""
                       aria-selected="true"
                     ></li>
-                    <li class="mdc-list-item" data-value="grains">
-                      Bread, Cereal, Rice, and Pasta
-                    </li>
-                    <li class="mdc-list-item" data-value="vegetables">
-                      Vegetables
-                    </li>
-                    <li class="mdc-list-item" data-value="fruit">
-                      Fruit
-                    </li>
                   </ul>
                 </div>
                 <div class="mdc-notched-outline">
@@ -125,7 +112,7 @@
                 class="mdc-chip-set mdc-chip-set--filter"
                 data-mdc-auto-init="MDCChipSet"
               >
-                <button class="mdc-chip mdc-chip--selected">
+                <button type="button" class="mdc-chip mdc-chip--selected">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -138,7 +125,7 @@
                   </span>
                   <span class="mdc-chip__text">Segunda</span>
                 </button>
-                <button class="mdc-chip mdc-chip--selected">
+                <button type="button" class="mdc-chip mdc-chip--selected">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -151,7 +138,7 @@
                   </span>
                   <span class="mdc-chip__text">Terça</span>
                 </button>
-                <button class="mdc-chip mdc-chip--selected">
+                <button type="button" class="mdc-chip mdc-chip--selected">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -164,7 +151,7 @@
                   </span>
                   <span class="mdc-chip__text">Quarta</span>
                 </button>
-                <button class="mdc-chip mdc-chip--selected">
+                <button type="button" class="mdc-chip mdc-chip--selected">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -177,7 +164,7 @@
                   </span>
                   <span class="mdc-chip__text">Quinta</span>
                 </button>
-                <button class="mdc-chip mdc-chip--selected">
+                <button type="button" class="mdc-chip mdc-chip--selected">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -190,7 +177,7 @@
                   </span>
                   <span class="mdc-chip__text">Sexta</span>
                 </button>
-                <button class="mdc-chip">
+                <button type="button" class="mdc-chip">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -203,7 +190,7 @@
                   </span>
                   <span class="mdc-chip__text">Sábado</span>
                 </button>
-                <button class="mdc-chip">
+                <button type="button" class="mdc-chip">
                   <span class="mdc-chip__checkmark">
                     <svg class="mdc-chip__checkmark-svg" viewBox="-2 -3 30 30">
                       <path
@@ -225,7 +212,7 @@
                 class="mdc-select mdc-select--outlined"
                 data-mdc-auto-init="MDCSelect"
               >
-                <input type="hidden" name="enhanced-select" />
+                <input id="campoPeriodo" type="hidden" name="enhanced-select" />
                 <i class="mdc-select__dropdown-icon"></i>
                 <div
                   class="mdc-select__selected-text"
@@ -234,19 +221,19 @@
                 <div
                   class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class"
                 >
-                  <ul class="mdc-list">
+                  <ul class="mdc-list" id="listaPeriodo">
                     <li
                       class="mdc-list-item mdc-list-item--selected"
                       aria-selected="true"
                       data-value=""
                     ></li>
-                    <li class="mdc-list-item" data-value="manha">
+                    <li class="mdc-list-item" data-value="Manhã">
                       Manhã
                     </li>
-                    <li class="mdc-list-item" data-value="tarde">
+                    <li class="mdc-list-item" data-value="Tarde">
                       Tarde
                     </li>
-                    <li class="mdc-list-item" data-value="noite">
+                    <li class="mdc-list-item" data-value="Noite">
                       Noite
                     </li>
                   </ul>
@@ -264,19 +251,24 @@
                 LOCAL DE PARTIDA
               </p>
               <div
-                class="mdc-text-field mdc-text-field--outlined"
+                class="mdc-text-field mdc-text-field--outlined mdc-text-field--disabled"
                 data-mdc-auto-init="MDCTextField"
               >
                 <input
                   type="text"
-                  id="caronaEndereco"
+                  id="campoEndereco"
                   class="mdc-text-field__input inputForm"
+                  disabled
                   required
                 />
-                <div class="mdc-notched-outline">
+                <div
+                  class="mdc-notched-outline mdc-notched-outline--upgraded mdc-notched-outline--notched"
+                >
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="my-input" class="mdc-floating-label"
+                    <label
+                      for="my-input"
+                      class="mdc-floating-label mdc-floating-label--float-above"
                       >Endereço</label
                     >
                   </div>
@@ -293,7 +285,7 @@
               >
                 <input
                   type="text"
-                  id="caronaVeiculo"
+                  id="campoVeiculo"
                   class="mdc-text-field__input inputForm"
                   required
                 />
@@ -320,6 +312,13 @@
         </div>
       </main>
     </div>
-    <script type="text/javascript" src="/public/scripts/material-io.js"></script>
+    <script src="/public/scripts/libs/jquery.min.js"></script>
+    <script src="/public/scripts/libs/sweetalert2.min.js"></script>
+    <script
+      type="text/javascript"
+      src="/public/scripts/libs/material-io.js"
+    ></script>
+    <script src="/public/scripts/index.js"></script>
+    <script src="/public/scripts/criar-carona.js"></script>
   </body>
 </html>

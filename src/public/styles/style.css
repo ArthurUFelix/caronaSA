@@ -126,7 +126,7 @@ body {
 }
 
 .buttonFormRegistar {
-  width: calc(300px - 68px);
+  width: calc(300px - 71px);
 }
 
 .buttonFormVoltar {
@@ -209,7 +209,7 @@ body {
   }
 
   .buttonFormRegistar {
-    width: calc(70% - 68px);
+    width: calc(70% - 71px);
   }
 
   .buttonFormVoltar {
@@ -224,7 +224,7 @@ body {
   }
 
   .buttonFormRegistar {
-    width: calc(100% - 68px);
+    width: calc(100% - 71px);
   }
 
   .buttonFormVoltar {
