@@ -69,7 +69,11 @@ $("#registro-form").submit(async function(e) {
   let respostaRegistro = await requisicaoRegistro.json();
 
   if (!respostaRegistro.id) {
-    return alert("Prenche os negocio direito ai po, ou o email ta em uso");
+    return Swal.fire({
+      icon: "error",
+      title: "Oops...",
+      text: "Informações inválidas ou email já em uso!"
+    });
   }
 
   let respostaLogin = await realizarLogin(dados.email, dados.senha);

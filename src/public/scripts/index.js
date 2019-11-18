@@ -36,3 +36,20 @@ async function realizarLogin(email, senha) {
 
   return requisicao.json();
 }
+
+$(document).ready(() => {
+  // Preenche os dados do menu lateral
+  const dados = JSON.parse(localStorage.dadosUsuario);
+
+  $("#nomeUsuario").text(dados.nome);
+  $("#emailUsuario").text(dados.email);
+});
+
+// Seleciona o botão de login
+$("span:contains('Logout')")
+  .parent()
+  .click(() => {
+    localStorage.clear();
+
+    location = "/public/pages/login.html";
+  });

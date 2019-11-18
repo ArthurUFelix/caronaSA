@@ -25,7 +25,11 @@ $("#login-form").submit(async function(e) {
     console.log(respostaLogin);
 
     if (!respostaLogin.token) {
-      return alert("credenciais erradas pô");
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Credênciais inválidas"
+      });
     }
 
     localStorage.setItem("token", respostaLogin.token);
