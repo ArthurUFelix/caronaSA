@@ -4,6 +4,14 @@ import Instituicao from "../models/Instituicao";
 import Usuario from "../models/Usuario";
 
 class InstituicaoController {
+  async get(req, res) {
+    const instituicoes = await Instituicao.findAll({
+      attributes: ["id", "nome"]
+    });
+
+    return res.json(instituicoes);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       nome: Yup.string().required(),

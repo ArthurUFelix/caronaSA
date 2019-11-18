@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import UsuarioController from "./app/controllers/UsuarioController";
+import RecuperacaoController from "./app/controllers/RecuperacaoController";
 import SessaoController from "./app/controllers/SessaoController";
 import InstituicaoController from "./app/controllers/InstituicaoController";
 import CaronaController from "./app/controllers/CaronaController";
@@ -12,12 +13,14 @@ const routes = new Router();
 
 routes.post("/usuarios", UsuarioController.store);
 routes.post("/sessoes", SessaoController.store);
+routes.post("/recuperacao", RecuperacaoController.store);
 
 routes.use(authMiddleware);
 
 routes.get("/usuarios/:id", UsuarioController.show);
 routes.put("/usuarios", UsuarioController.update);
 
+routes.get("/instituicoes", InstituicaoController.get);
 routes.post("/instituicoes", InstituicaoController.store);
 routes.put("/instituicoes/:id", InstituicaoController.update);
 routes.delete("/instituicoes/:id", InstituicaoController.delete);

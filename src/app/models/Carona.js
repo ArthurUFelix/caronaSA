@@ -6,7 +6,7 @@ class Carona extends Model {
       {
         desc_carro: Sequelize.STRING,
         hora: Sequelize.DATE,
-        dias: Sequelize.STRING,
+        dias: Sequelize.ARRAY(Sequelize.TEXT),
         disponivel: Sequelize.BOOLEAN
       },
       {

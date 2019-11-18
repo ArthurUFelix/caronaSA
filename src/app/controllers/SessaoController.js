@@ -30,13 +30,14 @@ class SessaoController {
       res.status(401).json({ erro: "Senha inválida" });
     }
 
-    const { id, nome } = usuario;
+    const { id, nome, endereco } = usuario;
 
     return res.json({
       usuario: {
         id,
         nome,
-        email
+        email,
+        endereco
       },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn
