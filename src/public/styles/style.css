@@ -142,6 +142,11 @@ body {
   margin-top: 18px;
 }
 
+.subtextDiv {
+  margin-top: 5px;
+  text-align: center;
+}
+
 .containerWrapper {
   border-radius: 8px;
   border: 1px solid #dadce0;
