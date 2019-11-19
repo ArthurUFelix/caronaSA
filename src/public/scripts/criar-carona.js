@@ -1,7 +1,14 @@
 verificarLogado();
 
+$(window).resize(function() {
+  $(".mdc-select__menu").width($(".mdc-select").width());
+});
+
 // Carrega dados do form
 $(document).ready(async () => {
+  // Arruma o select ruim
+  $(".mdc-select__menu").width($(".mdc-select").width());
+
   const requisicao = await fetch("/instituicoes", {
     headers: {
       Authorization: `Bearer ${localStorage.token}`
