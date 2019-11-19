@@ -38,3 +38,48 @@ $("#login-form").submit(async function(e) {
     location = "/public/pages/criar-carona.html";
   }
 });
+
+$("#btnRecuperarSenha").click(() => {
+  Swal.fire({
+    title: "Recuperar Conta",
+    input: "text",
+    inputAttributes: {
+      placeholder: "Digite seu email",
+      autocapitalize: "off"
+    },
+    showCancelButton: true,
+    confirmButtonText: "Recuperar",
+    cancelButtonText: "Cancelar",
+    showLoaderOnConfirm: true,
+    preConfirm: inputEmail => {
+      return fetch("/recuperacao", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email: inputEmail })
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            "Não encontramos nenhuma conta com o email informado"
+          );
+        });
+    },
+    allowOutsideClick: () => !Swal.isLoading()
+  }).then(result => {
+    if (result.value.id) {
+      Swal.fire({
+        icon: "success",
+        title: "Sucesso!",
+        text: "Enviamos uma mensagem para seu email com as informações de login"
+      });
+    }
+  });
+});

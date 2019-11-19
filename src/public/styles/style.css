@@ -23,6 +23,10 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.swal2-popup {
+  font-family: "Roboto", sans-serif !important;
+}
+
 html,
 body {
   height: 100%;
