@@ -159,16 +159,26 @@ body {
   vertical-align: center;
 }
 
-.containerForm {
+.cardWrapper {
+  border-radius: 8px;
+  margin: 3% 25% 0% 25%;
+  text-align: center;
+  vertical-align: center;
+}
+
+.containerForm,
+.cardContainer {
   text-align: left;
   margin: 0 15px 0 15px;
 }
 
-.containerForm h6 {
+.containerForm h6,
+.cardContainer h6 {
   padding-left: 5px;
 }
 
-.containerForm p {
+.containerForm p,
+.cardContainer p {
   margin: 0;
 }
 
@@ -176,7 +186,7 @@ body {
   margin: 1%;
 }
 
-.containerForm div.linebreak {
+.linebreak {
   margin: 15px 0px 0px 0px;
   width: 100%;
   border-top: 1px solid #dadce0;
@@ -200,6 +210,10 @@ body {
   display: none;
 }
 
+.mdc-card__actions {
+  padding-left: 0px;
+}
+
 @media (max-width: 1000px) {
   #login-div-esq {
     display: none;
@@ -211,6 +225,12 @@ body {
     width: 96%;
     margin: 2%;
   }
+
+  .cardWrapper {
+    width: 96%;
+    margin: 4% 2% 0 2%;
+  }
+
   .divForm,
   .buttonForm {
     text-align: center;
