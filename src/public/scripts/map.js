@@ -135,5 +135,58 @@ addInstMarkerAndSetViewBounds(map);
 // };
 // }
 
+//geocode - localização => Endereço
+
+btn_geocode = document.getElementById('geocode');
+
+reverseGeocode = (platform, reverseGeocodingParameters) => {
+    // INSTANCE OF THE GEOCODING SERVICE
+    let geocoder = platform.getGeocodingService();
+    // REVERSE GEOCODE METHOD => COORDINATE PARAMETER, CALLBACK ON SUCCESS, CALLBACK ON ERROR
+    return new Promise((resolve, reject) => {
+        geocoder.reverseGeocode(
+            reverseGeocodingParameters,
+            resolve,
+            reject
+        );
+    });
+}
+
+btn_geocode.addEventListener('click', event => {
+getPosition();
+        // CHECK BROWSER GEOLOCATION SUPPORT
+        if ("geolocation" in navigator) {
+            getPosition(locationOptions)
+                .then(response => {
+                    let obj_position = {
+                        latitude: response.coords.latitude.toFixed(6),
+                        longitude: response.coords.longitude.toFixed(6)
+                    },
+                        obj_here = {
+                            prox: `${obj_position.latitude}, ${obj_position.longitude}`, // THE ALTITUDE PARAMETER IS OPTIONAL (y,x,z)
+                            mode: 'retrieveAddresses',
+                            maxresults: '1',
+                            jsonattributes: 1
+                        };
+                         console.log(obj_here);
+                    obj_coordinate = `${obj_position.latitude}, ${obj_position.longitude}`;
+                    reverseGeocode(platform, obj_here)
+                        .then(location => {
+                            let address = location.response.view[0].result[0].location.address;
+                            // ADDRESS TEMPLATE
+                            let obj_template = {
+                                street: address.street !== undefined ? `${address.street}, ` : '',
+                                city: address.city !== undefined ? `${address.city}, ` : '',
+                                state: address.state !== undefined ? `${address.state}, ` : '',
+                                postalCode: address.postalCode !== undefined ? `${address.postalCode}, ` : ''
+                            }
+                            console.log(address);
+                        })
+                })
+        } else {
+            appHideLoading(spinner, spinner.children[0]);
+            appShowSnackBar(snackbar, 'Dispositivo sem suporte para localização');
+        }
+});
 
 
