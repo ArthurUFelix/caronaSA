@@ -4,7 +4,7 @@ import Instituicao from "../models/Instituicao";
 import Usuario from "../models/Usuario";
 
 class InstituicaoController {
-  async get(req, res) {
+  async index(req, res) {
     const instituicoes = await Instituicao.findAll({
       attributes: ["id", "nome"]
     });
