@@ -15,7 +15,7 @@ class SessaoController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação Falhou" });
+      return res.status(200).json({ erro: "Validação Falhou" });
     }
 
     const { email, senha } = req.body;
@@ -23,11 +23,11 @@ class SessaoController {
     const usuario = await Usuario.findOne({ where: { email } });
 
     if (!usuario) {
-      res.status(401).json({ erro: "Usuário não encontrado" });
+      res.status(200).json({ erro: "Usuário não encontrado" });
     }
 
     if (!(await usuario.verificarSenha(senha))) {
-      res.status(401).json({ erro: "Senha inválida" });
+      res.status(200).json({ erro: "Senha inválida" });
     }
 
     const { id, nome, endereco, geoloc } = usuario;

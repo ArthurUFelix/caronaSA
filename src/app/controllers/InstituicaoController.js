@@ -21,7 +21,7 @@ class InstituicaoController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação Falhou" });
+      return res.status(200).json({ erro: "Validação Falhou" });
     }
 
     /**
@@ -30,7 +30,7 @@ class InstituicaoController {
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
-      return res.status(401).json({ erro: "Acesso negado" });
+      return res.status(200).json({ erro: "Acesso negado" });
     }
 
     const instituicaoExiste = await Instituicao.findOne({
@@ -38,7 +38,7 @@ class InstituicaoController {
     });
 
     if (instituicaoExiste) {
-      return res.status(400).json({ erro: "Instituição já existe" });
+      return res.status(200).json({ erro: "Instituição já existe" });
     }
 
     const { id, nome } = await Instituicao.create(req.body);
@@ -58,7 +58,7 @@ class InstituicaoController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação falhou" });
+      return res.status(200).json({ erro: "Validação falhou" });
     }
 
     /**
@@ -67,13 +67,13 @@ class InstituicaoController {
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
-      return res.status(401).json({ erro: "Acesso negado" });
+      return res.status(200).json({ erro: "Acesso negado" });
     }
 
     const instituicao = await Instituicao.findByPk(req.params.id);
 
     if (!instituicao) {
-      return res.status(400).json({ erro: "Instituição não encontrada" });
+      return res.status(200).json({ erro: "Instituição não encontrada" });
     }
 
     const { nome } = req.body;
@@ -82,7 +82,7 @@ class InstituicaoController {
       const instituicaoExiste = await Instituicao.findOne({ where: { nome } });
 
       if (instituicaoExiste) {
-        return res.status(400).json({ erro: "Instituicao já existe" });
+        return res.status(200).json({ erro: "Instituicao já existe" });
       }
     }
 
@@ -103,13 +103,13 @@ class InstituicaoController {
     const usuario = await Usuario.findByPk(req.idUsuario);
 
     if (!usuario.admin) {
-      return res.status(401).json({ erro: "Acesso negado" });
+      return res.status(200).json({ erro: "Acesso negado" });
     }
 
     const instituicao = await Instituicao.findByPk(id);
 
     if (!instituicao) {
-      return res.status(400).json({ erro: "Instituição não encontrada" });
+      return res.status(200).json({ erro: "Instituição não encontrada" });
     }
 
     await instituicao.destroy();

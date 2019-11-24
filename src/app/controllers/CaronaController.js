@@ -31,13 +31,13 @@ class CaronaController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação falhou" });
+      return res.status(200).json({ erro: "Validação falhou" });
     }
 
     const instituicao = await Instituicao.findByPk(req.body.id_instituicao);
 
     if (!instituicao) {
-      return res.status(400).json({ erro: "Instituição não encontrada" });
+      return res.status(200).json({ erro: "Instituição não encontrada" });
     }
 
     const carona = await Carona.create({
@@ -58,19 +58,19 @@ class CaronaController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação falhou" });
+      return res.status(200).json({ erro: "Validação falhou" });
     }
 
     const carona = await Carona.findByPk(req.params.id);
 
     if (carona.id_usuario !== req.idUsuario) {
-      return res.status(401).json({ erro: "Acesso negado" });
+      return res.status(200).json({ erro: "Acesso negado" });
     }
 
     const instituicao = await Instituicao.findByPk(req.body.id_instituicao);
 
     if (!instituicao) {
-      return res.status(400).json({ erro: "Instituição não encontrada" });
+      return res.status(200).json({ erro: "Instituição não encontrada" });
     }
 
     await carona.update(req.body);
@@ -84,7 +84,7 @@ class CaronaController {
     const carona = await Carona.findByPk(id);
 
     if (carona.id_usuario !== req.idUsuario) {
-      return res.status(401).json({ erro: "Acesso negado" });
+      return res.status(200).json({ erro: "Acesso negado" });
     }
 
     await carona.destroy();

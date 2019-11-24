@@ -27,15 +27,17 @@ async function verificarLogado() {
     }
   });
 
+  const usuario = await requisicao.json();
+
   // ["", "public", "pages", "login.html"]
   path = location.pathname.split("/");
 
   if (path[1] === "login.html" || path[1] === "registro.html") {
-    if (requisicao.status === 200) return (location = "/criar-carona.html");
+    if (usuario.id) return (location = "/criar-carona.html");
     return;
   }
 
-  if (requisicao.status !== 200) {
+  if (!usuario.id) {
     return (location = "/login.html");
   }
 }

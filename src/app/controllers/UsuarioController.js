@@ -29,7 +29,7 @@ class UsuarioController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação Falhou" });
+      return res.status(200).json({ erro: "Validação Falhou" });
     }
 
     const usuarioExiste = await Usuario.findOne({
@@ -37,7 +37,7 @@ class UsuarioController {
     });
 
     if (usuarioExiste) {
-      return res.status(400).json({ erro: "Usuário já existe" });
+      return res.status(200).json({ erro: "Usuário já existe" });
     }
 
     const { id, nome, email } = await Usuario.create(req.body);
@@ -72,7 +72,7 @@ class UsuarioController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(400).json({ erro: "Validação falhou" });
+      return res.status(200).json({ erro: "Validação falhou" });
     }
 
     const { email, senha, senhaAntiga } = req.body;
@@ -82,7 +82,7 @@ class UsuarioController {
       const usuarioExiste = await Usuario.findOne({ where: { email } });
 
       if (usuarioExiste) {
-        return res.status(400).json({ erro: "Usuário já existe" });
+        return res.status(200).json({ erro: "Usuário já existe" });
       }
     }
 
@@ -90,7 +90,7 @@ class UsuarioController {
       (senha && !senhaAntiga) ||
       (senhaAntiga && !(await usuario.verificarSenha(senhaAntiga)))
     ) {
-      return res.status(401).json({ erro: "Senha inválida" });
+      return res.status(200).json({ erro: "Senha inválida" });
     }
 
     const { id, nome } = await usuario.update(req.body);
