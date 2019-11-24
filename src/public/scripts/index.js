@@ -9,7 +9,7 @@ if ("serviceWorker" in navigator) {
     // Register the service worker
     navigator.serviceWorker
       .register("sw.js,", {
-        scope: "/public/"
+        scope: "./"
       })
       .then(function(reg) {
         console.log(
