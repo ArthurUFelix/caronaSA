@@ -71,7 +71,6 @@ $("#perfil-form").submit(async function(e) {
   });
 
   let respostaCarona = await requisicaoUsuario.json();
-  console.log(respostaCarona);
 
   if (!respostaCarona.id) {
     return Swal.fire({

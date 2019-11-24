@@ -39,22 +39,63 @@ $("#registroVoltar").click(function(e) {
   });
 });
 
+$(document).ready(() => {
+  var padraoTelefone = function(val) {
+      return val.replace(/\D/g, "").length === 11
+        ? "(00) 00000-0000"
+        : "(00) 0000-00009";
+    },
+    opcoes = {
+      onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+    };
+
+  $("#campoTelefone").mask(padraoTelefone, opcoes);
+
+  $("#campoCEP").mask("00000-000");
+});
+
+$("#campoCEP").keyup(async function() {
+  if ($(this).cleanVal().length !== 8) {
+    return $(this).attr("pattern", "invalido");
+  }
+
+  const loc = await cepEndereco($(this).cleanVal());
+
+  if (loc.erro === true) {
+    return $(this).attr("pattern", "invalido");
+  }
+
+  $(this).removeAttr("pattern");
+
+  $("#campoEndereco").val(`${loc.bairro}, ${loc.logradouro}`);
+
+  $("#campoLoc").val(
+    `${loc.logradouro} replaceNumero, ${loc.localidade}, ${loc.uf}, ${loc.cep}`
+  );
+});
+
 // Registra
 $("#registro-form").submit(async function(e) {
   e.preventDefault();
+
+  const coords = await enderecoCoordenadas(
+    $("#campoLoc")
+      .val()
+      .replace("replaceNumero", $("campoNumero").val())
+  );
+
+  console.log(coords);
 
   const dados = {
     nome: $("#campoNome").val(),
     email: $("#campoEmail").val(),
     senha: $("#campoSenha").val(),
-    telefone: $("#campoTelefone").val(),
-    endereco: "Endereço ficticio, de teste, 32", //$("#campoEndereco").val(),
-    lat: "-27.600407", //$("#campoLatitude").val(),
-    lon: "-48.525815" //$("#campoLongitude").val()
-    // campoCEP
-    // campoEndereco
-    // campoNumero
-    //Rio Tavares, Servidão Quadros, 519
+    telefone: $("#campoTelefone").cleanVal(),
+    endereco: `${$("#campoEndereco")}, ${$("#campoNumero")}`,
+    lat: coords.latitude,
+    lon: coords.longitude
   };
 
   let requisicaoRegistro = await fetch("/usuarios", {

@@ -6,6 +6,31 @@
     <title>Registro - CaronaPraAula</title>
     <link href="/public/styles/material-web.min.css" rel="stylesheet" />
     <script src="/public/scripts/libs/material-web.min.js"></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+    />
     <link rel="stylesheet" href="/public/styles/style.css" />
   </head>
 
@@ -232,6 +257,12 @@
                   <div class="mdc-notched-outline__trailing"></div>
                 </div>
               </div>
+
+              <!-- Campos de endereço -->
+              <input type="hidden" id="campoLoc" />
+              <input type="hidden" id="campoLatitude" />
+              <input type="hidden" id="campoLongitude" />
+
               <br />
               <!-- BOTÕES: REGISTRAR E VOLTAR -->
               <div id="divButtonsRegistro">
@@ -262,12 +293,14 @@
       </div>
     </div>
     <script src="/public/scripts/libs/jquery.min.js"></script>
+    <script src="/public/scripts/libs/jquery.mask.min.js"></script>
     <script src="/public/scripts/libs/sweetalert2.min.js"></script>
     <script
       type="text/javascript"
       src="/public/scripts/libs/material-io.js"
     ></script>
     <script type="text/javascript" src="/public/scripts/index.js"></script>
+    <script type="text/javascript" src="/public/scripts/maps.js"></script>
     <script type="text/javascript" src="/public/scripts/registro.js"></script>
   </body>
 </html>

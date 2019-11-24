@@ -4,6 +4,25 @@ const platform = new H.service.Platform({
 
 const defaultLayers = platform.createDefaultLayers();
 
+function pegarCoordenadas() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+}
+
+async function enderecoCoordenadas(endereco) {
+  const geocoder = platform.getGeocodingService();
+
+  const opcoesHere = {
+    searchText: endereco,
+    jsonattributes: 1
+  };
+
+  const request = await geocoder.geocode(opcoesHere);
+
+  return request.response.view[0].result[0].location.displayPosition;
+}
+
 async function coordenadasCep(coordenadas) {
   const geocoder = platform.getGeocodingService();
 
