@@ -10,6 +10,7 @@ function pegarCoordenadas() {
   });
 }
 
+// Endereco = Rua Numero, Cidade, UF
 async function enderecoCoordenadas(endereco) {
   const geocoder = platform.getGeocodingService();
 
@@ -23,10 +24,18 @@ async function enderecoCoordenadas(endereco) {
   return request.response.view[0].result[0].location.displayPosition;
 }
 
+// Coordenadas = Lat, Lon
 async function coordenadasCep(coordenadas) {
   const geocoder = platform.getGeocodingService();
 
-  const request = await geocoder.reverseGeocode(coordenadas);
+  const opcoesHere = {
+    prox: coordenadas,
+    mode: "retrieveAddresses",
+    maxresults: "1",
+    jsonattributes: 1
+  };
+
+  const request = await geocoder.reverseGeocode(opcoesHere);
 
   return request.response.view[0].result[0].location.address.postalCode;
 }

@@ -83,10 +83,8 @@ $("#registro-form").submit(async function(e) {
   const coords = await enderecoCoordenadas(
     $("#campoLoc")
       .val()
-      .replace("replaceNumero", $("campoNumero").val())
+      .replace("replaceNumero", $("#campoNumero").val())
   );
-
-  console.log(coords);
 
   const dados = {
     nome: $("#campoNome").val(),
