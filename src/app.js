@@ -19,6 +19,10 @@ class App {
   middlewares() {
     this.server.set("PORT", process.env.PORT);
     this.server.use(
+      "/",
+      express.static(path.resolve(__dirname, "public", "pages"))
+    );
+    this.server.use(
       "/public",
       express.static(path.resolve(__dirname, "public"))
     );

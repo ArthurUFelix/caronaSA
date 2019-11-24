@@ -67,5 +67,11 @@ $("#carona-form").submit(async function(e) {
     });
   }
 
-  alert("Agora redireciona o user para a tela 'minhas caronas'");
+  Swal.fire({
+    icon: "success",
+    title: "Sucesso!",
+    text: "Carona registrada com sucesso"
+  }).then(() => {
+    location = "/suas-caronas.html";
+  });
 });

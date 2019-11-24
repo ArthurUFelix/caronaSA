@@ -8,14 +8,13 @@ async function verificarLogado() {
   // ["", "public", "pages", "login.html"]
   path = location.pathname.split("/");
 
-  if (path[3] === "login.html" || path[3] === "registro.html") {
-    if (requisicao.status === 200)
-      return (location = "/public/pages/criar-carona.html");
+  if (path[1] === "login.html" || path[1] === "registro.html") {
+    if (requisicao.status === 200) return (location = "/criar-carona.html");
     return;
   }
 
   if (requisicao.status !== 200) {
-    return (location = "/public/pages/login.html");
+    return (location = "/login.html");
   }
 }
 
@@ -66,5 +65,5 @@ $("span:contains('Logout')")
   .click(() => {
     localStorage.clear();
 
-    location = "/public/pages/login.html";
+    location = "/login.html";
   });

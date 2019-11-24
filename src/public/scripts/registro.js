@@ -117,5 +117,5 @@ $("#registro-form").submit(async function(e) {
   localStorage.setItem("token", respostaLogin.token);
   localStorage.setItem("dadosUsuario", JSON.stringify(respostaLogin.usuario));
 
-  location = "/public/pages/suas-caronas.html";
+  location = "/suas-caronas.html";
 });
