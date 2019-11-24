@@ -8,7 +8,7 @@ if ("serviceWorker" in navigator) {
   } else {
     // Register the service worker
     navigator.serviceWorker
-      .register("sw.js,", {
+      .register("sw.js", {
         scope: "./"
       })
       .then(function(reg) {
@@ -23,7 +23,9 @@ if ("serviceWorker" in navigator) {
 async function verificarLogado() {
   const requisicao = await fetch("/usuarios/1", {
     headers: {
-      Authorization: `Bearer ${localStorage.token}`
+      Authorization: `Bearer ${
+        localStorage.token ? localStorage.token : "semtoken"
+      }`
     }
   });
 
