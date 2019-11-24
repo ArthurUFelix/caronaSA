@@ -1,1 +1,1 @@
-web: sucrase-node ./src/server.js
+web: NODE_ENV=production sucrase-node ./src/server.js

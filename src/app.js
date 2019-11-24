@@ -17,6 +17,16 @@ class App {
   }
 
   middlewares() {
+    if (process.env.NODE_ENV === "production") {
+      this.server.use((req, res, next) => {
+        if (req.header("x-forwarded-proto") !== "https") {
+          res.redirect(`https://${req.header("host")}${req.url}`);
+        } else {
+          next();
+        }
+      });
+    }
+
     this.server.set("PORT", process.env.PORT);
     this.server.use(
       "/",
