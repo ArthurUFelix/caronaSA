@@ -1,21 +1,20 @@
-
-
- // Obtain the default map types from the platform object:
- var platform = new H.service.Platform({
+// Obtain the default map types from the platform object:
+var platform = new H.service.Platform({
   apikey: "JTmW8dYA61h9fZ39sGHsfsorV2KDWYHlWRlyC3kPGa4"
 });
 var defaultLayers = platform.createDefaultLayers();
 
 // Instantiate (and display) a map object:
 
-var  map = new H.Map(
-document.getElementById("map"),
-defaultLayers.vector.normal.map,
-{
-  zoom: 15,
-  center: { lat: -27, lng: -48 }
-}
+var map = new H.Map(
+  document.getElementById("map"),
+  defaultLayers.vector.normal.map,
+  {
+    zoom: 15,
+    center: { lat: -27, lng: -48 }
+  }
 );
+
 // add a resize listener to make sure that the map occupies the whole container
 window.addEventListener("resize", () => map.getViewPort().resize());
 
@@ -32,38 +31,6 @@ function addMarkerToGroup(group, coordinates, html) {
   group.addObject(marker);
 }
 
-const locs = [
-  {
-    coords: {
-      latitude: -27.48,
-      longitude: -48.20
-    }
-  },
-  {
-    coords: {
-      latitude: -27.58,
-      longitude: -48.50
-    }
-  }
-];
-
-locs.forEach(a => {
-  var group = new H.map.Group();
-  map.addObject(group);
-  addMarkerToGroup(
-    group,
-    { lat: a.coords.latitude , lng: a.coords.longitude },
-    ` 
-      Nome:    
-      Destino:
-      Dias:
-      Periodo
-      <button>Iniciar Chat</button>
-    `
-  );
-});
-
-
 // criar função para criar marcador com o id no banco
 // .forEach(a => {
 //     adicionarMarcador(coordenadas, id)
@@ -72,61 +39,50 @@ locs.forEach(a => {
 // tap => fetch('api/caronas/{id}') => tudo
 
 function addInstMarkerAndSetViewBounds() {
-var senai = new H.map.Marker({ lat: -27.5479, lng: -48.4978}),
-    ufsc = new H.map.Marker({lat: -27.601111, lng: -48.52}),
-    udesc = new H.map.Marker({lat: -27.586, lng: -48.5049}),
-    univale = new H.map.Marker({lat: -27.54338, lng: -48.50351}),
-    ifscCen = new H.map.Marker({lat: -27.59418, lng: -48.54325}),
-    ifscCon = new H.map.Marker({lat: -27.59704, lng: -48.57133}),
+  var senai = new H.map.Marker({ lat: -27.5479, lng: -48.4978 }),
+    ufsc = new H.map.Marker({ lat: -27.601111, lng: -48.52 }),
+    udesc = new H.map.Marker({ lat: -27.586, lng: -48.5049 }),
+    univale = new H.map.Marker({ lat: -27.54338, lng: -48.50351 }),
+    ifscCen = new H.map.Marker({ lat: -27.59418, lng: -48.54325 }),
+    ifscCon = new H.map.Marker({ lat: -27.59704, lng: -48.57133 }),
+    // const institucoes = [
+    //   {
+    //     coords: {
+    //       alt:
+    //     },
+    //     id
+    //   },
+    //   ...
+    // ]
 
-  // const institucoes = [
-  //   {
-  //     coords: {
-  //       alt:
-  //     },
-  //     id
-  //   },
-  //   ...
-  // ] 
-    
     inst = new H.map.Group();
 
-// add markers to the group
-    inst.addObjects([senai, ufsc, udesc, univale, ifscCen, ifscCon]);
-    map.addObject(inst);
+  // add markers to the group
+  inst.addObjects([senai, ufsc, udesc, univale, ifscCen, ifscCon]);
+  map.addObject(inst);
 
-    senai.setData("instituição");
-    // function buscarCarona(){
+  senai.setData("instituição");
+  // function buscarCarona(){
 
-      inst.addEventListener('tap', function(evt){
-        console.log(evt.target.getData());
-      });
-    // }
-    
+  inst.addEventListener("tap", function(evt) {
+    console.log(evt.target.getData());
+  });
+  // }
 
-// get geo bounding box for the group and set it to the map
-map.getViewModel().setLookAtData({
-bounds: inst.getBoundingBox()
-});
+  // get geo bounding box for the group and set it to the map
+  map.getViewModel().setLookAtData({
+    bounds: inst.getBoundingBox()
+  });
 }
 addInstMarkerAndSetViewBounds(map);
 // buscarCarona();
-
-
-
-
-
-
-
-    
-
 
 // FUNCTION TO GET CURRENT POSITION
 // getPosition = options => {
 //   return new Promise((resolve, reject) => {
 //     navigator.geolocation.getCurrentPosition(resolve, reject, options);
 //   });
-  
+
 // LOCATION OPTIONS
 // locationOptions = {
 //   enableHighAccuracy: true,
@@ -137,56 +93,49 @@ addInstMarkerAndSetViewBounds(map);
 
 //geocode - localização => Endereço
 
-btn_geocode = document.getElementById('geocode');
+btn_geocode = document.getElementById("geocode");
 
 reverseGeocode = (platform, reverseGeocodingParameters) => {
-    // INSTANCE OF THE GEOCODING SERVICE
-    let geocoder = platform.getGeocodingService();
-    // REVERSE GEOCODE METHOD => COORDINATE PARAMETER, CALLBACK ON SUCCESS, CALLBACK ON ERROR
-    return new Promise((resolve, reject) => {
-        geocoder.reverseGeocode(
-            reverseGeocodingParameters,
-            resolve,
-            reject
-        );
+  // INSTANCE OF THE GEOCODING SERVICE
+  let geocoder = platform.getGeocodingService();
+  // REVERSE GEOCODE METHOD => COORDINATE PARAMETER, CALLBACK ON SUCCESS, CALLBACK ON ERROR
+  return new Promise((resolve, reject) => {
+    geocoder.reverseGeocode(reverseGeocodingParameters, resolve, reject);
+  });
+};
+
+btn_geocode.addEventListener("click", event => {
+  getPosition();
+  // CHECK BROWSER GEOLOCATION SUPPORT
+  if ("geolocation" in navigator) {
+    getPosition(locationOptions).then(response => {
+      let obj_position = {
+          latitude: response.coords.latitude.toFixed(6),
+          longitude: response.coords.longitude.toFixed(6)
+        },
+        obj_here = {
+          prox: `${obj_position.latitude}, ${obj_position.longitude}`, // THE ALTITUDE PARAMETER IS OPTIONAL (y,x,z)
+          mode: "retrieveAddresses",
+          maxresults: "1",
+          jsonattributes: 1
+        };
+      console.log(obj_here);
+      obj_coordinate = `${obj_position.latitude}, ${obj_position.longitude}`;
+      reverseGeocode(platform, obj_here).then(location => {
+        let address = location.response.view[0].result[0].location.address;
+        // ADDRESS TEMPLATE
+        let obj_template = {
+          street: address.street !== undefined ? `${address.street}, ` : "",
+          city: address.city !== undefined ? `${address.city}, ` : "",
+          state: address.state !== undefined ? `${address.state}, ` : "",
+          postalCode:
+            address.postalCode !== undefined ? `${address.postalCode}, ` : ""
+        };
+        console.log(address);
+      });
     });
-}
-
-btn_geocode.addEventListener('click', event => {
-getPosition();
-        // CHECK BROWSER GEOLOCATION SUPPORT
-        if ("geolocation" in navigator) {
-            getPosition(locationOptions)
-                .then(response => {
-                    let obj_position = {
-                        latitude: response.coords.latitude.toFixed(6),
-                        longitude: response.coords.longitude.toFixed(6)
-                    },
-                        obj_here = {
-                            prox: `${obj_position.latitude}, ${obj_position.longitude}`, // THE ALTITUDE PARAMETER IS OPTIONAL (y,x,z)
-                            mode: 'retrieveAddresses',
-                            maxresults: '1',
-                            jsonattributes: 1
-                        };
-                         console.log(obj_here);
-                    obj_coordinate = `${obj_position.latitude}, ${obj_position.longitude}`;
-                    reverseGeocode(platform, obj_here)
-                        .then(location => {
-                            let address = location.response.view[0].result[0].location.address;
-                            // ADDRESS TEMPLATE
-                            let obj_template = {
-                                street: address.street !== undefined ? `${address.street}, ` : '',
-                                city: address.city !== undefined ? `${address.city}, ` : '',
-                                state: address.state !== undefined ? `${address.state}, ` : '',
-                                postalCode: address.postalCode !== undefined ? `${address.postalCode}, ` : ''
-                            }
-                            console.log(address);
-                        })
-                })
-        } else {
-            appHideLoading(spinner, spinner.children[0]);
-            appShowSnackBar(snackbar, 'Dispositivo sem suporte para localização');
-        }
+  } else {
+    appHideLoading(spinner, spinner.children[0]);
+    appShowSnackBar(snackbar, "Dispositivo sem suporte para localização");
+  }
 });
-
-

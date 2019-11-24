@@ -37,6 +37,19 @@ async function realizarLogin(email, senha) {
   return requisicao.json();
 }
 
+function definirValor(input, valor) {
+  $(input)
+    .val(valor)
+    // Pega div geral do input
+    .closest(".mdc-text-field")
+    // Busca a div o outlined
+    .find(".mdc-notched-outline")
+    .addClass("mdc-notched-outline--notched")
+    // Sobe o texto placeholder do input
+    .find(".mdc-floating-label")
+    .addClass("mdc-floating-label--float-above");
+}
+
 $(document).ready(() => {
   // Preenche os dados do menu lateral
   const dados = JSON.parse(localStorage.dadosUsuario);

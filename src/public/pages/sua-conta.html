@@ -6,6 +6,31 @@
     <title>Sua Conta - CaronaPraAula</title>
     <link href="/public/styles/material-web.min.css" rel="stylesheet" />
     <script src="/public/scripts/libs/material-web.min.js"></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-core.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-service.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-mapevents.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <script
+      src="https://js.api.here.com/v3/3.1/mapsjs-ui.js"
+      type="text/javascript"
+      charset="utf-8"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://js.api.here.com/v3/3.1/mapsjs-ui.css"
+    />
     <link rel="stylesheet" href="/public/styles/style.css" />
   </head>
 
@@ -65,7 +90,7 @@
       <main class="main-content" id="main-content">
         <div class="mdc-top-app-bar--fixed-adjust">
           <div class="containerWrapper">
-            <form class="containerForm">
+            <form class="containerForm" id="perfil-form">
               <h6 class="mdc-dialog__title">Perfil</h6>
 
               <!-- ALTERAR NOME -->
@@ -185,7 +210,7 @@
                     type="text"
                     id="campoNovaSenha"
                     class="mdc-text-field__input"
-                    required
+                    minlength="6"
                   />
                   <div class="mdc-notched-outline">
                     <div class="mdc-notched-outline__leading"></div>
@@ -208,7 +233,7 @@
                     type="text"
                     id="campoConfirmarNovaSenha"
                     class="mdc-text-field__input"
-                    required
+                    minlength="6"
                   />
                   <div class="mdc-notched-outline">
                     <div class="mdc-notched-outline__leading"></div>
@@ -226,7 +251,7 @@
 
               <!-- SENHA ANTIGA -->
               <p class="mdc-typography--overline">
-                CONFIRME A SENHA ANTIGA PARA SALVAR OS DADOS
+                CONFIRME A SENHA ANTIGA
               </p>
               <div
                 class="mdc-text-field mdc-text-field--outlined"
@@ -234,15 +259,16 @@
               >
                 <input
                   type="text"
-                  id="campoSenha"
+                  id="campoSenhaAntiga"
                   class="mdc-text-field__input inputForm"
-                  required
+                  minlength="6"
                 />
                 <div class="mdc-notched-outline">
                   <div class="mdc-notched-outline__leading"></div>
                   <div class="mdc-notched-outline__notch">
-                    <label for="campoSenhaAntiga" class="mdc-floating-label"
-                      >Confirme a Senha Antiga</label
+                    <label for="campoSenhaAntiga" class="mdc-floating-label">
+                      Confirme a Senha Antiga
+                    </label
                     >
                   </div>
                   <div class="mdc-notched-outline__trailing"></div>
@@ -263,12 +289,14 @@
         </div>
     </div>
     <script src="/public/scripts/libs/jquery.min.js"></script>
+    <script src="/public/scripts/libs/jquery.mask.min.js"></script>
     <script src="/public/scripts/libs/sweetalert2.min.js"></script>
     <script
       type="text/javascript"
       src="/public/scripts/libs/material-io.js"
     ></script>
     <script type="text/javascript" src="/public/scripts/index.js"></script>
+    <script type="text/javascript" src="/public/scripts/maps.js"></script>
     <script type="text/javascript" src="/public/scripts/sua-conta.js"></script>
   </body>
 </html>

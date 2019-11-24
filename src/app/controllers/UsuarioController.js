@@ -6,8 +6,8 @@ class UsuarioController {
   async show(req, res) {
     const { id } = req.params;
 
-    const usuario = await Usuario.findByPk(id, { 
-      attributes: ['id', 'nome',  'email', 'telefone', 'endereco', 'geoloc']
+    const usuario = await Usuario.findByPk(id, {
+      attributes: ["id", "nome", "email", "telefone", "endereco", "geoloc"]
     });
 
     return res.json(usuario);
@@ -50,6 +50,7 @@ class UsuarioController {
   }
 
   async update(req, res) {
+    console.log(req.body);
     const schema = Yup.object().shape({
       nome: Yup.string().required(),
       email: Yup.string()
@@ -74,7 +75,7 @@ class UsuarioController {
       return res.status(400).json({ erro: "Validação falhou" });
     }
 
-    const { email, senhaAntiga } = req.body;
+    const { email, senha, senhaAntiga } = req.body;
 
     const usuario = await Usuario.findByPk(req.idUsuario);
     if (email !== usuario.email) {
@@ -85,7 +86,10 @@ class UsuarioController {
       }
     }
 
-    if (senhaAntiga && !(await usuario.verificarSenha(senhaAntiga))) {
+    if (
+      (senha && !senhaAntiga) ||
+      (senhaAntiga && !(await usuario.verificarSenha(senhaAntiga)))
+    ) {
       return res.status(401).json({ erro: "Senha inválida" });
     }
 
