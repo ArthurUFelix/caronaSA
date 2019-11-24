@@ -1,6 +1,3 @@
-// Se usuário estiver logado, redireciona ele para a pagina inicial
-verificarLogado();
-
 // Mostrar e ocultar senha
 $("#btnMostrarSenha").click(function() {
   if ($(this).text() == "visibility") {
@@ -35,7 +32,7 @@ $("#login-form").submit(async function(e) {
     localStorage.setItem("token", respostaLogin.token);
     localStorage.setItem("dadosUsuario", JSON.stringify(respostaLogin.usuario));
 
-    location = "/public/pages/criar-carona.html";
+    location = "/public/pages/suas-caronas.html";
   }
 });
 

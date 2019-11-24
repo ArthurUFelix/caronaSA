@@ -19,6 +19,8 @@ async function verificarLogado() {
   }
 }
 
+verificarLogado();
+
 async function realizarLogin(email, senha) {
   const dados = {
     email: email,

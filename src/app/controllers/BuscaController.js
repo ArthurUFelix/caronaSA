@@ -7,7 +7,7 @@ import Instituicao from "../models/Instituicao";
 class BuscaController {
   async index(req, res) {
     const { id_instituicao, distancia } = req.query;
-
+    console.log(req.query);
     const distEmGraus = distancia / 1000 / 111.12;
 
     const usuario = await Usuario.findByPk(req.idUsuario);

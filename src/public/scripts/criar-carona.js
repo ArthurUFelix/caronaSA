@@ -1,5 +1,3 @@
-verificarLogado();
-
 $(window).resize(function() {
   $(".mdc-select__menu").width($(".mdc-select").width());
 });
