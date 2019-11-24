@@ -170,29 +170,92 @@
                   <div class="mdc-notched-outline__trailing"></div>
                 </div>
               </div>
-
-              <!-- ENDEREÇO -->
+              
+              <!-- ALTERAR ENDEREÇO -->
               <p class="mdc-typography--overline">
                 ALTERAR ENDEREÇO
               </p>
-              <div
-                class="mdc-text-field mdc-text-field--outlined"
-                data-mdc-auto-init="MDCTextField"
-              >
-                <input
-                  type="text"
-                  id="campoEndereco"
-                  class="mdc-text-field__input inputForm"
-                  required
-                />
-                <div class="mdc-notched-outline">
-                  <div class="mdc-notched-outline__leading"></div>
-                  <div class="mdc-notched-outline__notch">
-                    <label for="campoEndereco" class="mdc-floating-label"
-                      >Seu Endereço</label
-                    >
+              <div class="mdc-text-field mdc-text-field--outlined">
+                <!-- CEP -->
+                <div
+                  class="mdc-text-field mdc-text-field--outlined"
+                  data-mdc-auto-init="MDCTextField"
+                  id="divContaCampoCep"
+                >
+                  <input
+                    type="text"
+                    id="campoCEP"
+                    class="mdc-text-field__input"
+                    minlength="8"
+                  />
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label for="campoCEP" class="mdc-floating-label"
+                        >Seu CEP</label
+                      >
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
                   </div>
-                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+                <!-- SEPARADOR -->
+                <div class="formSpace"></div>
+                <!-- BOTÃO GPS -->
+                <button
+                    class="mdc-button mdc-button--outlined"
+                    id="buttonContaGPS"
+                  >
+                  <span class="mdc-button__ripple">
+                    <i class="material-icons">
+                      my_location
+                    </i>
+                  </span>
+                </button>
+                <!-- SEPARADOR -->
+                <div class="formSpace"></div>
+                <!-- ENDEREÇO -->
+                <div
+                  class="mdc-text-field mdc-text-field--outlined mdc-text-field--disabled"
+                  data-mdc-auto-init="MDCTextField"
+                >
+                  <input
+                    type="text"
+                    id="campoEndereco"
+                    class="mdc-text-field__input"
+                    disabled
+                  />
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label for="campoEndereco" class="mdc-floating-label"
+                        >Seu Endereço</label
+                      >
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
+                </div>
+                <!-- SEPARADOR -->
+                <div class="formSpace"></div>
+                <!-- NÚMERO -->
+                <div
+                  class="mdc-text-field mdc-text-field--outlined"
+                  data-mdc-auto-init="MDCTextField"
+                  id="divContaCampoNumero"
+                >
+                  <input
+                    type="text"
+                    id="campoNumero"
+                    class="mdc-text-field__input"
+                  />
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label for="campoNumero" class="mdc-floating-label"
+                        >Número</label
+                      >
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
+                  </div>
                 </div>
               </div>
 
@@ -224,7 +287,7 @@
                 </div>
                 <!-- SEPARADOR -->
                 <div class="formSpace"></div>
-                <!-- SOBRENOME -->
+                <!-- CONFIRMAR NOVA SENHA -->
                 <div
                   class="mdc-text-field mdc-text-field--outlined"
                   data-mdc-auto-init="MDCTextField"

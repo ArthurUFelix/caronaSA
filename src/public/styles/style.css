@@ -142,6 +142,16 @@ body {
   padding: 0;
 }
 
+#buttonContaGPS {
+  height: 56px;
+  width: 56px;
+}
+
+#buttonContaGPS i {
+  color: #394a6e;
+  padding: 0;
+}
+
 #registroVoltar {
   margin-top: 18px;
 }
@@ -214,6 +224,14 @@ body {
   padding-left: 0px;
 }
 
+#divContaCampoCep {
+  width: 35%;
+}
+
+#divContaCampoNumero {
+  width: 25%;
+}
+
 /* Tooltip container */
 .tooltip {
   position: relative;
@@ -261,6 +279,7 @@ body {
   opacity: 1;
 }
 
+/* MEDIA QUERY */
 @media (max-width: 1000px) {
   #login-div-esq {
     display: none;
