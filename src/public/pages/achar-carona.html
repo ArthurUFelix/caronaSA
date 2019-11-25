@@ -62,28 +62,51 @@
   </head>
 
   <body>
+    <!-- DRAWER -->
     <aside class="mdc-drawer mdc-drawer--modal">
+      <!-- DRAWER HEADER -->
       <div class="mdc-drawer__header">
         <h3 id="nomeUsuario" class="mdc-drawer__title">User</h3>
         <h6 id="emailUsuario" class="mdc-drawer__subtitle">user@carona.com</h6>
       </div>
       <div class="mdc-drawer__content">
+        <!-- DRAWER CONTENT -->
         <nav class="mdc-list">
-          <a
-            class="mdc-list-item mdc-list-item--activated"
-            href="/suas-caronas.html"
-          >
-            <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
-              >swap_horiz</i
-            >
-            <span class="mdc-list-item__text">Suas Caronas</span>
-          </a>
+          <!-- SUA CONTA -->
           <a class="mdc-list-item" href="/sua-conta.html">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >account_circle</i
             >
             <span class="mdc-list-item__text">Sua Conta</span>
           </a>
+          <hr class="mdc-list-divider" />
+          <!-- SUAS CARONAS -->
+          <a class="mdc-list-item" href="/suas-caronas.html">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
+              >swap_horiz</i
+            >
+            <span class="mdc-list-item__text">Suas Caronas</span>
+          </a>
+          <!-- CRIAR CARONA -->
+          <a class="mdc-list-item" href="/criar-carona.html">
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
+              >add_circle_outline</i
+            >
+            <span class="mdc-list-item__text">Criar Carona</span>
+          </a>
+          <!-- ACHAR CARONA (ATIVO) -->
+          <a
+            class="mdc-list-item mdc-list-item--activated"
+            href="/achar-carona.html"
+            aria-current="page"
+          >
+            <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
+              >search</i
+            >
+            <span class="mdc-list-item__text">Achar Carona</span>
+          </a>
+          <hr class="mdc-list-divider" />
+          <!-- LOGOUT -->
           <a class="mdc-list-item" href="#">
             <i class="material-icons mdc-list-item__graphic" aria-hidden="true"
               >power_settings_new</i
