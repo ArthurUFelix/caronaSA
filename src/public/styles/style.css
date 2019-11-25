@@ -42,6 +42,11 @@ body {
   padding: 0px;
 }
 
+h1,
+h2 {
+  color: #212121;
+}
+
 .material-icons {
   text-decoration: none;
   cursor: pointer;
