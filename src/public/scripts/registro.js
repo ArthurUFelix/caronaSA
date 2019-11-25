@@ -88,7 +88,7 @@ $("#registro-form").submit(async function(e) {
     email: $("#campoEmail").val(),
     senha: $("#campoSenha").val(),
     telefone: $("#campoTelefone").cleanVal(),
-    endereco: `${$("#campoEndereco")}, ${$("#campoNumero")}`,
+    endereco: `${$("#campoEndereco").val()}, ${$("#campoNumero").val()}`,
     lat: coords.latitude,
     lon: coords.longitude
   };
