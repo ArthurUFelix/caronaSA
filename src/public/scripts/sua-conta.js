@@ -26,6 +26,8 @@ $(document).ready(async () => {
   definirValor($("#campoEndereco"), separador.logradouro);
   definirValor($("#campoNumero"), separador.numero);
 
+  $("#campoCEP").trigger("keyup");
+
   var padraoTelefone = function(val) {
       return val.replace(/\D/g, "").length === 11
         ? "(00) 00000-0000"
