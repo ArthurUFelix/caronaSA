@@ -233,6 +233,15 @@ h2 {
   width: 35%;
 }
 
+#divRegistroCampoCEP,
+#divRegistroCampoCEP input {
+  width: calc(300px - 2% - 56px);
+}
+
+#divRegistroCampoCEP {
+  text-align: center;
+}
+
 #divContaCampoNumero {
   width: 25%;
 }
@@ -261,6 +270,11 @@ h2 {
     width: 70%;
   }
 
+  #divRegistroCampoCEP,
+  #divRegistroCampoCEP input {
+    width: calc(100% - 2% - 56px);
+  }
+
   .buttonFormRegistar {
     width: calc(70% - 71px);
   }
@@ -274,6 +288,11 @@ h2 {
   .divForm,
   .buttonForm {
     width: 100%;
+  }
+
+  #divRegistroCampoCEP,
+  #divRegistroCampoCEP input {
+    width: calc(100% - 2% - 56px);
   }
 
   .buttonFormRegistar {
