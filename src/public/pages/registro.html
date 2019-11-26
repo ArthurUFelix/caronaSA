@@ -215,25 +215,44 @@
                 </div>
               </div>
               <br />
-              <!-- CEP -->
-              <div
-                class="mdc-text-field mdc-text-field--outlined divForm"
-                data-mdc-auto-init="MDCTextField"
-              >
-                <input
-                  type="text"
-                  id="campoCEP"
-                  class="mdc-text-field__input inputForm"
-                  required
-                />
-                <div class="mdc-notched-outline">
-                  <div class="mdc-notched-outline__leading"></div>
-                  <div class="mdc-notched-outline__notch">
-                    <label for="campoCEP" class="mdc-floating-label">CEP</label>
+              <!-- LINHA: CEP E GPS-->
+              <div class="mdc-text-field mdc-text-field--outlined divForm">
+                <!-- CEP -->
+                <div
+                  class="mdc-text-field mdc-text-field--outlined"
+                  data-mdc-auto-init="MDCTextField"
+                  id="divRegistroCampoCEP"
+                >
+                  <input
+                    type="text"
+                    id="campoCEP"
+                    class="mdc-text-field__input inputForm"
+                    required
+                  />
+                  <div class="mdc-notched-outline">
+                    <div class="mdc-notched-outline__leading"></div>
+                    <div class="mdc-notched-outline__notch">
+                      <label for="campoCEP" class="mdc-floating-label"
+                        >CEP</label
+                      >
+                    </div>
+                    <div class="mdc-notched-outline__trailing"></div>
                   </div>
-
-                  <div class="mdc-notched-outline__trailing"></div>
                 </div>
+                <!-- SEPARADOR -->
+                <div class="formSpace"></div>
+                <!-- BOTÃO GPS -->
+                <button
+                  type="button"
+                  class="mdc-button mdc-button--outlined buttonGPS"
+                  id="buttonRegistroGPS"
+                >
+                  <span class="mdc-button__ripple">
+                    <i class="material-icons">
+                      my_location
+                    </i>
+                  </span>
+                </button>
               </div>
               <br />
               <!-- ENDEREÇO -->
