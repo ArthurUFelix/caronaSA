@@ -22,6 +22,81 @@ $(document).ready(async () => {
   const id_instituicao = url.searchParams.get("id_instituicao");
   const distancia = url.searchParams.get("distancia");
 
+  await Swal.fire({
+    html: `
+      <input id="campoDistancia">
+      <select id="campoInstituicao">
+        <option value="2">Senai</option>
+      </select>
+    `,
+    confirmButtonText: "Buscar",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showLoaderOnConfirm: true,
+    preConfirm: () => {
+      const instituicao = $("#campoInstituicao :selected").val();
+      const id_instituicao = $("#campoInstituicao").val();
+      const distancia = $("#campoDistancia").val();
+
+      return fetch(`/buscar?id_instituicao=${id_instituicao}&distancia=${distancia}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .catch(error => {
+          Swal.showValidationMessage(
+            `Não encontramos nenhuma carona para o seu destino (${instituicao}) dentro do raio informado`
+          );
+        });
+    }
+  }).then(result => {
+    if (result.value.id) {
+      Swal.fire({
+        icon: "success",
+        title: "Sucesso!",
+        text: "Enviamos uma mensagem para seu email com as informações de login"
+      });
+    }
+  });
+
+  await Swal.fire({
+    html: `
+      <input id="campoDistancia">
+      <select id="campoInstituicao">
+        <option value="2">Senai</option>
+      </select>
+    `,
+    confirmButtonText: 'Confirm',
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    showLoaderOnConfirm: true,
+    preConfirm: function() {
+      return fetch(`//api.github.com/users/${login}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Request failed: ${error}`
+        )
+      })
+    }
+  }).then((data) => {
+      // your input data object will be usable from here
+      console.log(data);
+  });
+
+  // allowOutsideClick: false
+
   const requisicao = await fetch(
     `/buscar?id_instituicao=${id_instituicao}&distancia=${distancia}`,
     {
