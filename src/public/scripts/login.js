@@ -57,11 +57,13 @@ $("#btnRecuperarSenha").click(() => {
         },
         body: JSON.stringify({ email: inputEmail })
       })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error(response.statusText);
+        .then(async response => {
+          const resposta = await response.json();
+
+          if (!resposta.id) {
+            throw new Error();
           }
-          return response.json();
+          return resposta;
         })
         .catch(error => {
           Swal.showValidationMessage(
