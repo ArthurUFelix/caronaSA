@@ -25,23 +25,23 @@ $(document).ready(async () => {
   definirValor($("#campoCEP"), separador.cep);
   definirValor($("#campoEndereco"), separador.logradouro);
   definirValor($("#campoNumero"), separador.numero);
+  
+  var padraoTelefone = function(val) {
+    return val.replace(/\D/g, "").length === 11
+    ? "(00) 00000-0000"
+    : "(00) 0000-00009";
+  },
+  opcoes = {
+    onKeyPress: function(val, e, field, options) {
+      field.mask(SPMaskBehavior.apply({}, arguments), options);
+    }
+  };
+  
+  $("#campoTelefone").mask(padraoTelefone, opcoes);
+  
+  $("#campoCEP").mask("00000-000");
 
   $("#campoCEP").trigger("keyup");
-
-  var padraoTelefone = function(val) {
-      return val.replace(/\D/g, "").length === 11
-        ? "(00) 00000-0000"
-        : "(00) 0000-00009";
-    },
-    opcoes = {
-      onKeyPress: function(val, e, field, options) {
-        field.mask(SPMaskBehavior.apply({}, arguments), options);
-      }
-    };
-
-  $("#campoTelefone").mask(padraoTelefone, opcoes);
-
-  $("#campoCEP").mask("00000-000");
 });
 
 $("#campoCEP").keyup(async function() {
