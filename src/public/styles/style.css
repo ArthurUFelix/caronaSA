@@ -250,6 +250,16 @@ h2 {
   margin: 2%;
 }
 
+.alertContainer {
+  text-align: left;
+}
+
+.alertContainer h6,
+.alertContainer p {
+  padding: 0;
+  margin: 0;
+}
+
 /* MEDIA QUERY */
 @media (max-width: 1000px) {
   #login-div-esq {
