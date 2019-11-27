@@ -73,15 +73,59 @@ $("#campoCEP").keyup(async function() {
   );
 });
 
+$("#buttonRegistroGPS").click(function() {
+  Swal.fire({
+    title: "Deseja usar sua localização atual?",
+    text:
+      "Caso você esteja em um dispositivo sem GPS, para melhor experiência com o aplicativo, é recomendado não utilizar esta função, e digitar seu endereço manualmente",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Digitar manualmente",
+    confirmButtonText: "Buscar localização"
+  }).then(async result => {
+    if (result.value) {
+      const { coords } = await pegarCoordenadas();
+
+      $("#campoLatitude").val(coords.latitude);
+      $("#campoLongitude").val(coords.longitude);
+
+      const cep = await coordenadasCep(
+        `${coords.latitude}, ${coords.longitude}`
+      );
+
+      definirValor($("#campoCEP"), "");
+
+      $("#campoCEP")
+        .val(cep)
+        .trigger("keyup");
+    } else {
+      $("#campoCEP").val("");
+      $("#campoEndereco").val("");
+      $("#campoLatitude").val("");
+      $("#campoLongitude").val("");
+    }
+  });
+});
+
 // Registra
 $("#registro-form").submit(async function(e) {
   e.preventDefault();
 
-  const coords = await enderecoCoordenadas(
-    $("#campoLoc")
-      .val()
-      .replace("replaceNumero", $("#campoNumero").val())
-  );
+  let coords = {};
+  if ($("#campoLatitude").val() && $("#campoLongitude").val()) {
+    coords = {
+      latitude: $("#campoLatitude").val(),
+      longitude: $("#campoLongitude").val()
+    };
+  } else {
+    coords = await enderecoCoordenadas(
+      $("#campoLoc")
+        .val()
+        .replace("replaceNumero", $("#campoNumero").val())
+    );
+  }
 
   const dados = {
     nome: $("#campoNome").val(),
