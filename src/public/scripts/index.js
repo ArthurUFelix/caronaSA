@@ -21,7 +21,7 @@ if ("serviceWorker" in navigator) {
 }
 
 async function verificarLogado() {
-  const requisicao = await fetch("/usuarios/1", {
+  const requisicao = await fetch("/usuarios/4", {
     headers: {
       Authorization: `Bearer ${
         localStorage.token ? localStorage.token : "semtoken"
