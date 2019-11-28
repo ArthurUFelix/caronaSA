@@ -23,24 +23,7 @@ $(document).ready(async () => {
     html: `
       <div class="alertContainer">
         <h6 class="mdc-typography--headline6">Achar Carona</h6>
-        
-        <p class="mdc-typography--overline">RAIO DE BUSCA (EM METROS)</p>
-        <div class="mdc-slider mdc-slider--discrete" data-mdc-auto-init="MDCSlider" tabindex="0" role="slider"
-        aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-step="10" aria-label="Select Value" style="padding: 0; margin: 0">
-            <div class="mdc-slider__track-container">
-             <div class="mdc-slider__track"></div>
-            </div>
-            <div class="mdc-slider__thumb-container">
-              <div class="mdc-slider__pin">
-                <span class="mdc-slider__pin-value-marker"></span>
-              </div>
-            <svg class="mdc-slider__thumb" width="21" height="21">
-              <circle cx="10.5" cy="10.5" r="7.875"></circle>
-            </svg>
-            <div class="mdc-slider__focus-ring"></div>
-          </div>
-        </div>
-       
+
         <p class="mdc-typography--overline">DESTINO</p>
         <div class="mdc-select mdc-select--outlined mdc-select--required" data-mdc-auto-init="MDCSelect" style="width: 100%">
           <input
@@ -72,6 +55,26 @@ $(document).ready(async () => {
             <div class="mdc-notched-outline__trailing"></div>
           </div>
         </div>
+        
+        <p class="mdc-typography--overline">RAIO DE BUSCA (EM METROS)</p>
+        <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers" tabindex="0" role="slider"
+            aria-valuemin="250" aria-valuemax="2000" aria-valuenow="250" data-step="250"
+            aria-label="Select Value">
+          <div class="mdc-slider__track-container">
+            <div class="mdc-slider__track"></div>
+            <div class="mdc-slider__track-marker-container"></div>
+          </div>
+          <div class="mdc-slider__thumb-container">
+            <div class="mdc-slider__pin" style="width: 40px; height: 40px; margin-top: -18px; margin-left: -9px;">
+              <span class="mdc-slider__pin-value-marker"></span>
+            </div>
+            <svg class="mdc-slider__thumb" width="21" height="21">
+              <circle cx="10.5" cy="10.5" r="7.875">        </circle>
+              </svg>
+              <div class="mdc-slider__focus-ring"></div>
+            </div>
+          </div>
+        </div>
       </div>
     `,
     confirmButtonText: "Buscar",
@@ -85,16 +88,11 @@ $(document).ready(async () => {
       location = "/suas-caronas.html";
     },
     onOpen: () => {
-      mdc.autoInit();
-      /* const slider = mdc.slider.MDCSlider.attachTo(
-        document.querySelector(".mdc-slider")
-      ); */
-      $(window).resize(function() {
-        $(".mdc-select__menu").width($(".mdc-select").width());
-        /* slider.layout(); */
-      });
+      const slider = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
 
-      $(window).trigger("resize");
+      setTimeout(()=> {
+        slider.layout();
+      }, 230);
     },
     preConfirm: () => {
       const instituicao = $("#campoInstituicao :selected").text();
