@@ -55,6 +55,8 @@ $(document).ready(() => {
 
 $("#campoCEP").keyup(async function() {
   if ($(this).cleanVal().length !== 8) {
+    $("#campoEndereco").val("");
+    $("#campoLoc").val("");
     return $(this).attr("pattern", "invalido");
   }
 

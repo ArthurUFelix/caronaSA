@@ -296,6 +296,14 @@ h2 {
   .buttonFormVoltar {
     width: 64px;
   }
+
+  #divContaEndereco {
+    display: none;
+  }
+
+  #divContaEndereco-MQ {
+    display: block;
+  }
 }
 
 @media (max-width: 800px) {
