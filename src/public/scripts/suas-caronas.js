@@ -41,12 +41,12 @@ $(document).ready(async () => {
             <div class="cardSwitch">
             <button class="mdc-button mdc-button--unelevated caronaIndisponivel">
             <div class="mdc-button__ripple"></div>
-            <span class="mdc-button__label">Button</span>
+            <span class="mdc-button__label">Indisponível</span>
             <i class="material-icons mdc-button__icon" aria-hidden="true">remove_circle</i>
           </button>
               <button class="mdc-button mdc-button--unelevated caronaDisponivel">
                 <div class="mdc-button__ripple"></div>
-                <span class="mdc-button__label">Button</span>
+                <span class="mdc-button__label">Disponível</span>
                 <i class="material-icons mdc-button__icon" aria-hidden="true">check_circle</i>
               </button>
             </div>
