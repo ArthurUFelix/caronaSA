@@ -31,6 +31,7 @@ html,
 body {
   height: 100%;
   margin: 0;
+  background-image: url("../images/back_pattern.png");
 }
 
 a {
@@ -172,6 +173,7 @@ h2 {
   margin: 5% 25% 3% 25%;
   text-align: center;
   vertical-align: center;
+  background-color: #f9f9f9;
 }
 
 .cardWrapper {
@@ -179,12 +181,14 @@ h2 {
   margin: 3% 25% 0% 25%;
   text-align: center;
   vertical-align: center;
+  background-color: #f9f9f9;
 }
 
 .containerForm,
 .cardContainer {
   text-align: left;
   margin: 0 15px 0 15px;
+  background-color: #f9f9f9;
 }
 
 .containerForm h6,
