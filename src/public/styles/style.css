@@ -260,6 +260,27 @@ h2 {
   margin: 0;
 }
 
+.cardTitle {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardSwitch {
+  margin: 20px 10px 0 0;
+}
+
+.caronaDisponivel {
+  --mdc-theme-primary: #43a047;
+  height: 26px;
+  padding: 0 8px 0 12px;
+}
+
+.caronaIndisponivel {
+  --mdc-theme-primary: #e53935;
+  height: 26px;
+  padding: 0 8px 0 12px;
+}
+
 /* MEDIA QUERY */
 @media (max-width: 1000px) {
   #login-div-esq {
@@ -323,5 +344,13 @@ h2 {
 
   .buttonFormVoltar {
     width: 64px;
+  }
+
+  .cardTitle {
+    flex-direction: column;
+  }
+
+  div.cardSwitch {
+    margin: 0px 0 10px 0;
   }
 }

@@ -36,21 +36,30 @@ $(document).ready(async () => {
     containerCards.append(`
       <div class="cardWrapper mdc-elevation--z1">
         <div class="cardContainer">
-          <h6 class="mdc-dialog__title">${carona.instituicao.nome}</h6>
-          <div class="mdc-switch mdc-switch--checked" data-mdc-auto-init="MDCSwitch">
-            <div class="mdc-switch__track"></div>
-            <div class="mdc-switch__thumb-underlay">
-              <div class="mdc-switch__thumb">
-                <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch" checked>
-              </div>
+          <div class="cardTitle" style="">
+            <h6 class="mdc-dialog__title">${carona.instituicao.nome}</h6>
+            <div class="cardSwitch">
+            <button class="mdc-button mdc-button--unelevated caronaIndisponivel">
+            <div class="mdc-button__ripple"></div>
+            <span class="mdc-button__label">Button</span>
+            <i class="material-icons mdc-button__icon" aria-hidden="true">remove_circle</i>
+          </button>
+              <button class="mdc-button mdc-button--unelevated caronaDisponivel">
+                <div class="mdc-button__ripple"></div>
+                <span class="mdc-button__label">Button</span>
+                <i class="material-icons mdc-button__icon" aria-hidden="true">check_circle</i>
+              </button>
             </div>
           </div>
           <p class="mdc-typography--body1">${carona.periodo}</p>
           <p class="mdc-typography--body1">${carona.dias}</p>
           <div class="linebreak"></div>
-          <div class="mdc-card__actions">
+          <div class="mdc-card__actions" style="display: flex; justify-content: space-between">
             <button class="mdc-button mdc-card__action mdc-card__action--button">
               <span class="mdc-button__label">DELETAR</span>
+            </button>
+            <button class="mdc-button mdc-card__action mdc-card__action--button">
+              <span class="mdc-button__label">TROCAR DISPONIBILIDADE</span>
             </button>
           </div>
         </div>
