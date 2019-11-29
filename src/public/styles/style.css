@@ -199,6 +199,7 @@ h2 {
 .containerForm p,
 .cardContainer p {
   margin: 0;
+  padding: 0 0 0 5px;
 }
 
 .formSpace {
@@ -230,7 +231,7 @@ h2 {
 }
 
 .mdc-card__actions {
-  padding-left: 0px;
+  padding: 0px;
 }
 
 #divContaCampoCep {

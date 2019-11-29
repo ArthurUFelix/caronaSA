@@ -51,16 +51,17 @@ $(document).ready(async () => {
               </button>
             </div>
           </div>
-          <p class="mdc-typography--body1">${carona.periodo}</p>
           <p class="mdc-typography--body1">${carona.dias}</p>
+          <p class="mdc-typography--body1">${carona.periodo}</p>
           <div class="linebreak"></div>
           <div class="mdc-card__actions" style="display: flex; justify-content: space-between">
             <button class="mdc-button mdc-card__action mdc-card__action--button">
+              <span class="mdc-button__label">MUDAR DISPONIBILIDADE</span>
+            </button>
+            <button class="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button" style="--mdc-theme-primary: #e53935">
               <span class="mdc-button__label">DELETAR</span>
             </button>
-            <button class="mdc-button mdc-card__action mdc-card__action--button">
-              <span class="mdc-button__label">TROCAR DISPONIBILIDADE</span>
-            </button>
+            
           </div>
         </div>
       </div>
