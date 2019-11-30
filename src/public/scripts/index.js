@@ -77,7 +77,18 @@ function definirValor(input, valor) {
     .addClass("mdc-floating-label--float-above");
 }
 
-$(document).ready(() => {
+$(document).ready(async () => {
+  const requisicao = await fetch(`/usuarios/${localStorage.idUsuario}`, {
+    headers: {
+      Authorization: `Bearer ${
+        localStorage.token ? localStorage.token : "semtoken"
+      }`
+    }
+  });
+
+  localStorage.removeItem("dadosUsuario");
+  localStorage.setItem("dadosUsuario", JSON.stringify(await requisicao.json()));
+
   // Preenche os dados do menu lateral
   const dados = JSON.parse(localStorage.dadosUsuario);
 

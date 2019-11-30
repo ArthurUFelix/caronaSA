@@ -1,19 +1,43 @@
 $(window).resize(function() {
-  if($("#divContaEndereco").is(":visible") == false) {
+  if ($("#divContaEndereco").is(":visible") == false) {
     $("#divContaEndereco input, #divContaEndereco button").each(function() {
-      $(this).attr("id", `${$(this).attr("id").replace("-MQ", "")}-MQ`);
+      $(this).attr(
+        "id",
+        `${$(this)
+          .attr("id")
+          .replace("-MQ", "")}-MQ`
+      );
     });
 
-    $("#divContaEndereco-MQ input, #divContaEndereco-MQ button").each(function() {
-      $(this).attr("id", $(this).attr("id").replace("-MQ", ""));
-    });
+    $("#divContaEndereco-MQ input, #divContaEndereco-MQ button").each(
+      function() {
+        $(this).attr(
+          "id",
+          $(this)
+            .attr("id")
+            .replace("-MQ", "")
+        );
+      }
+    );
   } else {
-    $("#divContaEndereco-MQ input, #divContaEndereco-MQ button").each(function() {
-      $(this).attr("id", `${$(this).attr("id").replace("-MQ", "")}-MQ`);
-    });
+    $("#divContaEndereco-MQ input, #divContaEndereco-MQ button").each(
+      function() {
+        $(this).attr(
+          "id",
+          `${$(this)
+            .attr("id")
+            .replace("-MQ", "")}-MQ`
+        );
+      }
+    );
 
     $("#divContaEndereco input, #divContaEndereco button").each(function() {
-      $(this).attr("id", $(this).attr("id").replace("-MQ", ""));
+      $(this).attr(
+        "id",
+        $(this)
+          .attr("id")
+          .replace("-MQ", "")
+      );
     });
   }
 
@@ -23,22 +47,22 @@ $(window).resize(function() {
       $("#campoLoc").val("");
       return $(this).attr("pattern", "invalido");
     }
-  
+
     const loc = await cepEndereco($(this).cleanVal());
-  
+
     if (loc.erro === true) {
       return $(this).attr("pattern", "invalido");
     }
-  
+
     $(this).removeAttr("pattern");
-  
+
     $("#campoEndereco").val(`${loc.bairro}, ${loc.logradouro}`);
-  
+
     $("#campoLoc").val(
       `${loc.logradouro} replaceNumero, ${loc.localidade}, ${loc.uf}, ${loc.cep}`
     );
   });
-  
+
   $("#buttonContaGPS").click(function() {
     Swal.fire({
       title: "Deseja usar sua localização atual?",
@@ -53,16 +77,16 @@ $(window).resize(function() {
     }).then(async result => {
       if (result.value) {
         const { coords } = await pegarCoordenadas();
-  
+
         $("#campoLatitude").val(coords.latitude);
         $("#campoLongitude").val(coords.longitude);
-  
+
         const cep = await coordenadasCep(
           `${coords.latitude}, ${coords.longitude}`
         );
-  
+
         definirValor($("#campoCEP"), "");
-  
+
         $("#campoCEP")
           .val(cep)
           .trigger("keyup");
@@ -89,17 +113,16 @@ $(document).ready(async () => {
 
   const usuario = await requisicao.json();
 
-  
   const endereco = usuario.endereco.split(",");
 
   const separador = {
     cep: await coordenadasCep(
       `${usuario.geoloc.coordinates[0]}, ${usuario.geoloc.coordinates[1]}`
-      ),
+    ),
     logradouro: `${endereco[0]},${endereco[1]}`,
     numero: endereco[2].trim()
   };
-    
+
   definirValor($("#campoNome"), usuario.nome);
   definirValor($("#campoEmail"), usuario.email);
   definirValor($("#campoTelefone"), usuario.telefone);
@@ -112,18 +135,18 @@ $(document).ready(async () => {
   definirValor($("#campoNumero-MQ"), separador.numero);
 
   var padraoTelefone = function(val) {
-    return val.replace(/\D/g, "").length === 11
-    ? "(00) 00000-0000"
-    : "(00) 0000-00009";
-  },
-  opcoes = {
-    onKeyPress: function(val, e, field, options) {
-      field.mask(SPMaskBehavior.apply({}, arguments), options);
-    }
-  };
-  
+      return val.replace(/\D/g, "").length === 11
+        ? "(00) 00000-0000"
+        : "(00) 0000-00009";
+    },
+    opcoes = {
+      onKeyPress: function(val, e, field, options) {
+        field.mask(SPMaskBehavior.apply({}, arguments), options);
+      }
+    };
+
   $("#campoTelefone").mask(padraoTelefone, opcoes);
-  
+
   $("#campoCEP").mask("00000-000");
   $("#campoCEP-MQ").mask("00000-000");
 

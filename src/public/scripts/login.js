@@ -19,7 +19,6 @@ $("#login-form").submit(async function(e) {
     };
 
     let respostaLogin = await realizarLogin(dados.email, dados.senha);
-    console.log(respostaLogin);
 
     if (!respostaLogin.token) {
       return Swal.fire({

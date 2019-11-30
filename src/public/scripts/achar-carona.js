@@ -1,29 +1,11 @@
 $(document).ready(async () => {
-  let map = new H.Map(
-    document.getElementById("map"),
-    defaultLayers.vector.normal.map,
-    {
-      zoom: 15,
-      center: { lat: -27, lng: -48 }
-    }
-  );
-
-  // add a resize listener to make sure that the map occupies the whole container
-  window.addEventListener("resize", () => map.getViewPort().resize());
-
-  // Create the default UI:
-  let ui = H.ui.UI.createDefault(map, defaultLayers);
-
-  // Instantiate the default behavior, providing the mapEvents object:
-  let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
-
   let resposta, distancia;
 
   await Swal.fire({
     html: `
       <div class="alertContainer">
         <h6 class="mdc-typography--headline6">Achar Carona</h6>
-
+  
         <p class="mdc-typography--overline">DESTINO</p>
         <div class="mdc-select mdc-select--outlined mdc-select--required" data-mdc-auto-init="MDCSelect" style="width: 100%">
           <input
@@ -38,6 +20,7 @@ $(document).ready(async () => {
           ></div>
           <div
             class="mdc-select__menu mdc-menu mdc-menu-surface demo-width-class"
+            style="z-index: 1061;"
           >
             <ul class="mdc-list" id="listaInstituicoes">
               <li
@@ -59,7 +42,8 @@ $(document).ready(async () => {
         <p class="mdc-typography--overline">RAIO DE BUSCA (EM METROS)</p>
         <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers" tabindex="0" role="slider"
             aria-valuemin="250" aria-valuemax="2000" aria-valuenow="250" data-step="250"
-            aria-label="Select Value">
+            aria-label="Select Value"
+            id="divDistancia">
           <div class="mdc-slider__track-container">
             <div class="mdc-slider__track"></div>
             <div class="mdc-slider__track-marker-container"></div>
@@ -85,19 +69,47 @@ $(document).ready(async () => {
     allowEscapeKey: false,
     showLoaderOnConfirm: true,
     onClose: () => {
-      location = "/suas-caronas.html";
+      if (!resposta) location = "/suas-caronas.html";
     },
-    onOpen: () => {
-      const slider = new mdc.slider.MDCSlider(document.querySelector('.mdc-slider'));
+    onOpen: async () => {
+      mdc.autoInit();
 
-      setTimeout(()=> {
+      $(window).resize(function() {
+        $(".mdc-select__menu").width($(".mdc-select").width());
+      });
+
+      $(window).trigger("resize");
+
+      const requisicao = await fetch("/instituicoes", {
+        headers: {
+          Authorization: `Bearer ${localStorage.token}`
+        }
+      });
+
+      const instituicoes = await requisicao.json();
+
+      const lista = $("#listaInstituicoes");
+
+      instituicoes.map(i => {
+        lista.append(`
+          <li class="mdc-list-item" data-value="${i.id}">
+            ${i.nome}
+          </li>
+        `);
+      });
+
+      const slider = new mdc.slider.MDCSlider(
+        document.querySelector(".mdc-slider")
+      );
+
+      setTimeout(() => {
         slider.layout();
       }, 230);
     },
     preConfirm: () => {
-      const instituicao = $("#campoInstituicao :selected").text();
+      const instituicao = $(".mdc-select__selected-text").text();
       const id_instituicao = $("#campoInstituicao").val();
-      distancia = $("#campoDistancia").val();
+      distancia = $("#divDistancia").attr("aria-valuenow");
 
       return fetch(
         `/buscar?id_instituicao=${id_instituicao}&distancia=${distancia}`,
@@ -125,6 +137,24 @@ $(document).ready(async () => {
         });
     }
   });
+
+  let map = new H.Map(
+    document.getElementById("map"),
+    defaultLayers.vector.normal.map,
+    {
+      zoom: 15,
+      center: { lat: -27, lng: -48 }
+    }
+  );
+
+  // add a resize listener to make sure that the map occupies the whole container
+  window.addEventListener("resize", () => map.getViewPort().resize());
+
+  // Create the default UI:
+  let ui = H.ui.UI.createDefault(map, defaultLayers);
+
+  // Instantiate the default behavior, providing the mapEvents object:
+  let behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
   const grupo = new H.map.Group();
 
