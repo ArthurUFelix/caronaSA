@@ -12,6 +12,7 @@ $(document).ready(async () => {
             id="campoInstituicao"
             type="hidden"
             name="enhanced-select"
+            required
           />
           <i class="mdc-select__dropdown-icon"></i>
           <div
@@ -194,7 +195,6 @@ $(document).ready(async () => {
         </div>
         `,
       showCloseButton: true,
-      focusConfirm: false,
       confirmButtonText: "Fechar",
       confirmButtonAriaLabel: "Thumbs up, great!"
     });
