@@ -20,8 +20,11 @@ if ("serviceWorker" in navigator) {
   }
 }
 
+// VARIAVEL GLOBAL
+let dadosUsuario = {};
+
 async function verificarLogado() {
-  const requisicao = await fetch("/usuarios/4", {
+  const requisicao = await fetch(`/usuarios/${localStorage.idUsuario}`, {
     headers: {
       Authorization: `Bearer ${
         localStorage.token ? localStorage.token : "semtoken"
@@ -35,13 +38,15 @@ async function verificarLogado() {
   path = location.pathname.split("/");
 
   if (path[1] === "login.html" || path[1] === "registro.html") {
-    if (usuario.id) return (location = "/criar-carona.html");
+    if (usuario.id) return (location = "/suas-caronas.html");
     return;
   }
 
   if (!usuario.id) {
     return (location = "/login.html");
   }
+
+  dadosUsuario = usuario;
 }
 
 verificarLogado();
@@ -78,22 +83,8 @@ function definirValor(input, valor) {
 }
 
 $(document).ready(async () => {
-  const requisicao = await fetch(`/usuarios/${localStorage.idUsuario}`, {
-    headers: {
-      Authorization: `Bearer ${
-        localStorage.token ? localStorage.token : "semtoken"
-      }`
-    }
-  });
-
-  localStorage.removeItem("dadosUsuario");
-  localStorage.setItem("dadosUsuario", JSON.stringify(await requisicao.json()));
-
-  // Preenche os dados do menu lateral
-  const dados = JSON.parse(localStorage.dadosUsuario);
-
-  $("#nomeUsuario").text(dados.nome);
-  $("#emailUsuario").text(dados.email);
+  $("#nomeUsuario").text(dadosUsuario.nome);
+  $("#emailUsuario").text(dadosUsuario.email);
 });
 
 // Seleciona o botão de login

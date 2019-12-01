@@ -25,7 +25,7 @@ $(document).ready(async () => {
     `);
   });
 
-  const dados = JSON.parse(localStorage.dadosUsuario);
+  const dados = dadosUsuario;
 
   $("#campoEndereco").val(dados.endereco);
 });

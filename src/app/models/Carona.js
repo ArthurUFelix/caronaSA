@@ -5,7 +5,6 @@ class Carona extends Model {
     super.init(
       {
         desc_carro: Sequelize.STRING,
-        hora: Sequelize.DATE,
         dias: Sequelize.ARRAY(Sequelize.TEXT),
         periodo: Sequelize.STRING,
         disponivel: Sequelize.BOOLEAN

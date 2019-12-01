@@ -103,9 +103,7 @@ $(window).resize(function() {
 $(window).trigger("resize");
 
 $(document).ready(async () => {
-  const id = JSON.parse(localStorage.dadosUsuario).id;
-
-  const requisicao = await fetch(`/usuarios/${id}`, {
+  const requisicao = await fetch(`/usuarios/${localStorage.idUsuario}`, {
     headers: {
       Authorization: `Bearer ${localStorage.token}`
     }
@@ -185,8 +183,6 @@ $("#perfil-form").submit(async function(e) {
     lat: coords.latitude,
     lon: coords.longitude
   };
-
-  console.log(dados);
 
   let requisicaoUsuario = await fetch("/usuarios", {
     method: "PUT",

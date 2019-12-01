@@ -34,6 +34,7 @@ routes.delete("/caronas/:id", CaronaController.delete);
 routes.get("/buscar", BuscaController.index);
 
 routes.get("/agenda", AgendaController.index);
+routes.put("/agenda/:id", AgendaController.update);
 
 // routes.post("/files", upload.single("file"), FileController.store);
 

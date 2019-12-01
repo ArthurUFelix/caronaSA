@@ -29,7 +29,7 @@ $("#login-form").submit(async function(e) {
     }
 
     localStorage.setItem("token", respostaLogin.token);
-    localStorage.setItem("dadosUsuario", JSON.stringify(respostaLogin.usuario));
+    localStorage.setItem("idUsuario", respostaLogin.usuario.id);
 
     location = "/suas-caronas.html";
   }

@@ -40,7 +40,7 @@ $(document).ready(async () => {
           </div>
         </div>
         
-        <p class="mdc-typography--overline">RAIO DE BUSCA (EM METROS)</p>
+        <p class="mdc-typography--overline">RAIO DE BUSCA: <span id="raioBusca">250</span> metros</p>
         <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers" tabindex="0" role="slider"
             aria-valuemin="250" aria-valuemax="2000" aria-valuenow="250" data-step="250"
             aria-label="Select Value"
@@ -75,6 +75,18 @@ $(document).ready(async () => {
     onOpen: async () => {
       mdc.autoInit();
 
+      const slider = new mdc.slider.MDCSlider(
+        document.querySelector(".mdc-slider")
+      );
+
+      slider.listen("MDCSlider:change", () => {
+        $("#raioBusca").text(slider.value);
+      });
+
+      setTimeout(() => {
+        slider.layout();
+      }, 230);
+
       $(window).resize(function() {
         $(".mdc-select__menu").width($(".mdc-select").width());
       });
@@ -98,19 +110,17 @@ $(document).ready(async () => {
           </li>
         `);
       });
-
-      const slider = new mdc.slider.MDCSlider(
-        document.querySelector(".mdc-slider")
-      );
-
-      setTimeout(() => {
-        slider.layout();
-      }, 230);
     },
     preConfirm: () => {
       const instituicao = $(".mdc-select__selected-text").text();
       const id_instituicao = $("#campoInstituicao").val();
       distancia = $("#divDistancia").attr("aria-valuenow");
+
+      if (!id_instituicao) {
+        return Swal.showValidationMessage(
+          `Selecione uma instituição para prosseguir`
+        );
+      }
 
       return fetch(
         `/buscar?id_instituicao=${id_instituicao}&distancia=${distancia}`,
@@ -123,7 +133,7 @@ $(document).ready(async () => {
         .then(async response => {
           const res = await response.json();
 
-          if (res.length === 0) {
+          if (!res.length) {
             throw new Error();
           }
 
@@ -191,18 +201,32 @@ $(document).ready(async () => {
           <p><b>Período: </b><span>${carona.periodo}</span></p>
           <p><b>Dias: </b><span>${carona.dias}</span></p>
           <p><b>Descrição do veículo: </b><span>${carona.desc_carro}</span></p>
-          <p><b>Celular de Arthur: </b><span>${carona.usuario.telefone}</span></p>
+          <p><b>Celular de Arthur: </b><span id="telefone-${id_carona}">${carona.usuario.telefone}</span></p>
         </div>
         `,
       showCloseButton: true,
       confirmButtonText: "Fechar",
-      confirmButtonAriaLabel: "Thumbs up, great!"
+      confirmButtonAriaLabel: "Thumbs up, great!",
+      onOpen: () => {
+        var padraoTelefone = function(val) {
+            return val.replace(/\D/g, "").length === 11
+              ? "(00) 00000-0000"
+              : "(00) 0000-00009";
+          },
+          opcoes = {
+            onKeyPress: function(val, e, field, options) {
+              field.mask(SPMaskBehavior.apply({}, arguments), options);
+            }
+          };
+
+        $(`#telefone-${id_carona}`).mask(padraoTelefone, opcoes);
+      }
     });
   });
 
   const {
     geoloc: { coordinates }
-  } = JSON.parse(localStorage.dadosUsuario);
+  } = dadosUsuario;
 
   circulo = new H.map.Circle(
     // The central point of the circle
