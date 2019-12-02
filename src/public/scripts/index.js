@@ -47,6 +47,9 @@ async function verificarLogado() {
   }
 
   dadosUsuario = usuario;
+
+  $("#nomeUsuario").text(dadosUsuario.nome);
+  $("#emailUsuario").text(dadosUsuario.email);
 }
 
 verificarLogado();
@@ -81,11 +84,6 @@ function definirValor(input, valor) {
     .find(".mdc-floating-label")
     .addClass("mdc-floating-label--float-above");
 }
-
-$(document).ready(async () => {
-  $("#nomeUsuario").text(dadosUsuario.nome);
-  $("#emailUsuario").text(dadosUsuario.email);
-});
 
 // Seleciona o botão de login
 $("span:contains('Logout')")

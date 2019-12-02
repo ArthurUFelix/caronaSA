@@ -39,7 +39,7 @@ $(document).ready(async () => {
           <div class="cardTitle" style="">
             <h6 class="mdc-dialog__title">${carona.instituicao.nome}</h6>
             <div class="cardSwitch">
-              <button class="mdc-button mdc-button--unelevated ${
+              <button style="cursor: inherit;" class="mdc-button mdc-button--unelevated ${
                 carona.disponivel ? "caronaDisponivel" : "caronaIndisponivel"
               }">
                 <div class="mdc-button__ripple"></div>
@@ -56,8 +56,8 @@ $(document).ready(async () => {
           <p class="mdc-typography--body1">${carona.periodo}</p>
           <div class="linebreak"></div>
           <div class="mdc-card__actions" style="display: flex; justify-content: space-between">
-            <button class="mdc-button mdc-card__action mdc-card__action--button">
-              <span class="mdc-button__label btnDisponibilidade">MUDAR DISPONIBILIDADE</span>
+            <button class="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button btnDisponibilidade">
+              <span class="mdc-button__label">MUDAR DISPONIBILIDADE</span>
             </button>
             <button class="mdc-button mdc-button--outlined mdc-card__action mdc-card__action--button" style="--mdc-theme-primary: #e53935">
               <span class="mdc-button__label btnDeletar">DELETAR</span>
@@ -95,7 +95,10 @@ $(document).ready(async () => {
         .removeClass("caronaIndisponivel")
         .addClass("caronaDisponivel")
         .find("span")
-        .text("disponível");
+        .text("disponível")
+        .closest("button")
+        .find("i")
+        .text("check_circle");
     } else {
       icon.removeClass("check_circle").addClass("remove_circle");
       icon
@@ -103,7 +106,10 @@ $(document).ready(async () => {
         .removeClass("caronaDisponivel")
         .addClass("caronaIndisponivel")
         .find("span")
-        .text("indisponível");
+        .text("indisponível")
+        .closest("button")
+        .find("i")
+        .text("remove_circle");;
     }
   });
 

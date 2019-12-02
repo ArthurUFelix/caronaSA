@@ -12,6 +12,11 @@ import authMiddleware from "./app/middlewares/auth";
 
 const routes = new Router();
 
+// Rota padrão
+routes.get("/", (req, res) => {
+  res.redirect("/login.html");
+});
+
 routes.post("/usuarios", UsuarioController.store);
 routes.post("/sessoes", SessaoController.store);
 routes.post("/recuperacao", RecuperacaoController.store);
