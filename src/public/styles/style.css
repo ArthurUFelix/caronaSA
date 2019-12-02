@@ -286,6 +286,22 @@ h2 {
   padding: 0 8px 0 12px;
 }
 
+.offlineWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.offlineContainer {
+  background: #e53935;
+  text-align: center;
+}
+
+.offlineContainer h4 {
+  margin-top: 0;
+}
+
 /* MEDIA QUERY */
 @media (max-width: 1000px) {
   #login-div-esq {
