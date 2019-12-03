@@ -286,6 +286,11 @@ h2 {
   padding: 0 8px 0 12px;
 }
 
+#bodyOffline {
+  background-image: url(../images/offline.jpg);
+  background-size: cover;
+}
+
 .offlineWrapper {
   display: flex;
   align-items: center;
@@ -294,12 +299,22 @@ h2 {
 }
 
 .offlineContainer {
-  background: #e53935;
+  background: rgba(57, 74, 110, 0.9);
   text-align: center;
 }
 
-.offlineContainer h4 {
+.offlineContainer h2,
+.offlineContainer h5 {
+  color: white;
+}
+
+.offlineContainer h2 {
+  font-weight: 500;
+}
+
+.offlineContainer h5 {
   margin-top: 0;
+  padding: 0 20px 0 20px;
 }
 
 /* MEDIA QUERY */
