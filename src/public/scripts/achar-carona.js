@@ -201,7 +201,7 @@ $(document).ready(async () => {
           <p><b>Período: </b><span>${carona.periodo}</span></p>
           <p><b>Dias: </b><span>${carona.dias}</span></p>
           <p><b>Descrição do veículo: </b><span>${carona.desc_carro}</span></p>
-          <p><b>Celular de Arthur: </b><span id="telefone-${id_carona}">${carona.usuario.telefone}</span></p>
+          <p><b>Celular de <span>${carona.usuario.nome.split(" ")[0]}</span>: </b><span id="telefone-${id_carona}">${carona.usuario.telefone}</span></p>
         </div>
         `,
       showCloseButton: true,
