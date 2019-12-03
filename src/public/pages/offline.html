@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Login - CaronaPraAula</title>
+    <title>Offline - CaronaPraAula</title>
     <link href="/public/styles/material-web.min.css" rel="stylesheet" />
     <script src="/public/scripts/libs/material-web.min.js"></script>
     <link rel="stylesheet" href="/public/styles/style.css" />
@@ -36,96 +36,22 @@
     <link rel="manifest" href="./manifest.json" />
   </head>
 
-  <body>
-    <div class="wrapper">
-      <div id="login-div-esq"></div>
-      <div id="login-div-dir">
-        <div class="mdc-layout-grid__cell--span-4" id="login-container">
-          <div id="login-header">
-            <img
-              src="/public/images/logo.png"
-              alt="Logo da CaronaPraAula"
-              id="loginLogo"
-            />
-            <h1 class="mdc-typography--headline4">Olá de novo!</h1>
-            <h2 class="mdc-typography--headline6">
-              Novo por aqui?
-              <a href="/registro.html">Crie uma conta.</a>
-            </h2>
-          </div>
-          <form id="login-form">
-            <!-- EMAIL -->
-            <div
-              class="mdc-text-field mdc-text-field--outlined divForm"
-              data-mdc-auto-init="MDCTextField"
-            >
-              <input
-                type="email"
-                id="campoEmail"
-                class="mdc-text-field__input inputForm"
-                required
-              />
-              <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                  <label for="my-input" class="mdc-floating-label">Email</label>
-                </div>
-                <div class="mdc-notched-outline__trailing"></div>
-              </div>
-            </div>
-            <br />
-            <!-- SENHA -->
-            <div
-              class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-trailing-icon divForm"
-              data-mdc-auto-init="MDCTextField"
-            >
-              <input
-                type="password"
-                id="campoSenha"
-                class="mdc-text-field__input inputForm"
-                minlength="6"
-                required
-              />
-              <i
-                class="material-icons mdc-text-field__icon"
-                tabindex="0"
-                role="button"
-                id="btnMostrarSenha"
-                >visibility</i
-              >
-              <div class="mdc-notched-outline">
-                <div class="mdc-notched-outline__leading"></div>
-                <div class="mdc-notched-outline__notch">
-                  <label for="loginSenha" class="mdc-floating-label"
-                    >Senha</label
-                  >
-                </div>
-                <div class="mdc-notched-outline__trailing"></div>
-              </div>
-            </div>
-            <br />
-            <div class="subtextDiv">
-              <span class="mdc-typography--subtitle2" id="btnRecuperarSenha">
-                <a href="#">Esqueceu sua senha?</a>
-              </span>
-            </div>
-            <button
-              class="mdc-button mdc-button--unelevated buttonForm"
-              id="btnEntrar"
-            >
-              <span class="mdc-button__ripple"></span>ENTRAR
-            </button>
-          </form>
+  <body id="bodyOffline">
+    <div class="offlineWrapper">
+      <div class="offlineContainer mdc-elevation--z2">
+        <div class="offlineTitulo">
+          <h2 class="mdc-typography--headline2">Você está offline!</h2>
+        </div>
+        <br />
+        <div class="offlineSubtitulo">
+          <h5 class="mdc-typography--headline5">
+            Este aplicativo só pode ser utilizado com uma conexão à Internet.
+          </h5>
         </div>
       </div>
     </div>
+
+    <!-- SCRIPTS -->
     <script src="/public/scripts/libs/jquery.min.js"></script>
-    <script src="/public/scripts/libs/sweetalert2.min.js"></script>
-    <script
-      type="text/javascript"
-      src="/public/scripts/libs/material-io.js"
-    ></script>
-    <script type="text/javascript" src="/public/scripts/index.js"></script>
-    <script type="text/javascript" src="/public/scripts/login.js"></script>
   </body>
 </html>

@@ -169,10 +169,15 @@ $(document).ready(async () => {
 
   const grupo = new H.map.Group();
 
+  const carIcon = new H.map.Icon('/public/images/car.svg', {size: {w: 32, h: 32}});
+    
   resposta.map(carona => {
     let marcador = new H.map.Marker({
       lat: carona.usuario.geoloc.coordinates[0],
       lng: carona.usuario.geoloc.coordinates[1]
+    },
+    {
+      icon: carIcon
     });
 
     marcador.setData(carona.id);
