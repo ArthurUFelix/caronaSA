@@ -1,18 +1,22 @@
 // This is the "Offline page" service worker
-const CACHE = "pwa-offline-page";
+const CACHE = "pwa-page-3";
 
 // TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
 const offlineFallbackPage = "/offline.html";
 
 const urls = [
-// '/offline.html',
-  '/public/styles/material-web.min.css',
-  '/public/scripts/libs/material-web.min.js',
-  '/public/styles/style.css',
-  '/public/images/logo.png',
-  '/public/images/offline.jpg',
-  '/public/scripts/libs/jquery.min.js'
+  // '/offline.html',
+  "/public/styles/material-web.min.css",
+  "/public/scripts/libs/material-web.min.js",
+  "/public/styles/style.css",
+  "/public/images/logo.png",
+  "/public/images/offline.jpg",
+  "/public/scripts/libs/jquery.min.js"
 ];
+
+// const pages = [
+//   '/'
+// ]
 
 // Install stage sets up the offline page in the cache and opens a new cache
 self.addEventListener("install", function(event) {
@@ -38,28 +42,32 @@ self.addEventListener("fetch", function(event) {
   event.respondWith(
     caches.open(CACHE).then(function(cache) {
       return cache.match(event.request).then(function(response) {
-        if(response) {
-          console.log("Cache encontrado");
-          
+        if (response) {
+          console.log(event.request, "Pagina Cacheada");
+
           return response;
         } else {
-          fetch(event.request).then(function (response) {
-            console.log("Retornando pagina normalmente");
-      
-            if(response) {
-              return response;
-            }
-          });
-        }
+          return fetch(event.request)
+            .then(function(response) {
+              console.log(event.request, "Pagina Atualizada");
 
-        return cache.match(offlineFallbackPage).then(async function(response) {
-          if(response) {
-            console.log("Retornando offline page");
-  
-            return response;
-          }
-        });
+              if (response) {
+                return response;
+              }
+            })
+            .catch(function(error) {
+              return cache
+                .match(offlineFallbackPage)
+                .then(async function(response) {
+                  if (response) {
+                    console.log(event.request, "Offline Page");
+
+                    return response;
+                  }
+                });
+            });
+        }
       });
     })
-  )
+  );
 });
