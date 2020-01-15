@@ -13,12 +13,3 @@
 
 **Utilize o arquivo `Workspace-CaronaSA.json` para realizar a importação do Workspace para o [Insomnia](https://insomnia.rest/). Siga os passos abaixo para a importação**
 ![](insomnia.gif)
-
-### Tarefas
-
-- [x] Criar migrations
-- [x] Criar models
-- [x] Criar crud básico para todas as models
-- [ ] Verificar e criar funções extras para as models
-- [ ] Configurar Multer para o armazenamento de imagens
-- [ ] Configurar mecanismo de envio de emails
