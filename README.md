@@ -1,4 +1,4 @@
-# caronaSA
+# CaronaPraAula (caronaSA)
 
 ## demo: https://sa-carona.herokuapp.com/
 
